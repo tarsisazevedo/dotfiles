@@ -122,3 +122,5 @@ echo -ne "Today is "; date
 echo -e ""; cal;
 echo -ne "Up time: ";uptime | awk /'up/ {print $3,$4}'
 echo "";
+
+export GTK_MODULES=globalmenu-gnome
