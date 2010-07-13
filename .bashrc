@@ -124,3 +124,28 @@ echo -ne "Up time: ";uptime | awk /'up/ {print $3,$4}'
 echo "";
 
 export GTK_MODULES=globalmenu-gnome
+
+export PYTHONPATH=/home/francisco/Projetos/lettuce
+
+export PATH=/home/francisco/Projetos/lettuce/lettuce:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+
+source /usr/local/bin/virtualenvwrapper.sh
+
+function work () {
+    typeset env_name="$1"
+    if [ "$env_name" = "" ]
+    then
+        virtualenvwrapper_show_workon_options
+        return 1
+    fi
+
+    virtualenvwrapper_verify_workon_environment $env_name || return 1
+
+    echo "source ~/.profile
+          workon $env_name" > ~/.virtualenvrc
+
+    bash --rcfile ~/.virtualenvrc
+}
+
+export JAVA_HOME=/usr/lib/jvm/java-6-sun/bin
+export PATH=/home/francisco/Applications/android-sdk:$PATH
