@@ -125,7 +125,7 @@ echo "";
 
 export GTK_MODULES=globalmenu-gnome
 
-export PYTHONPATH=/home/francisco/Projetos/lettuce
+export PYTHONPATH=/home/francisco/Projetos/lettuce:/home/francisco/Projetos/talks/google_appengine/:/home/francisco/Projetos/talks/google_appengine/lib/yaml/lib/
 
 export PATH=/home/francisco/Projetos/lettuce/lettuce:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 
@@ -149,3 +149,7 @@ function work () {
 
 export JAVA_HOME=/usr/lib/jvm/java-6-sun/bin
 export PATH=/home/francisco/Applications/android-sdk:$PATH
+
+export GOROOT=$HOME/Applications/go
+export GOARCH=amd64
+export GOOS=linux
