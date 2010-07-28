@@ -153,3 +153,5 @@ export PATH=/home/francisco/Applications/android-sdk:$PATH
 export GOROOT=$HOME/Applications/go
 export GOARCH=amd64
 export GOOS=linux
+export GOBIN=$GOROOT/bin
+export PATH=$PATH:$GOBIN
