@@ -124,8 +124,11 @@ echo -ne "Up time: ";uptime | awk /'up/ {print $3,$4}'
 echo "";
 
 export GTK_MODULES=globalmenu-gnome
+export GAE=/usr/local/google_appengine
+export GAE_USR=$GAE/lib
 
-export PYTHONPATH=/home/francisco/Projetos/lettuce:/home/francisco/Projetos/talks/google_appengine/:/home/francisco/Projetos/talks/google_appengine/lib/yaml/lib/
+export PYTHONPATH=/home/francisco/Projetos/lettuce:$GAE:$GAE_USR/yaml/lib/
+export PYTHONPATH=$PYTHONPATH:$GAE_USR/webob:$GAE_USR/antlr3:$GAE_USR/ipaddr:$GAE_USR/cacerts
 
 export PATH=/home/francisco/Projetos/lettuce/lettuce:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 
@@ -154,4 +157,4 @@ export GOROOT=$HOME/Applications/go
 export GOARCH=amd64
 export GOOS=linux
 export GOBIN=$GOROOT/bin
-export PATH=$PATH:$GOBIN
+export PATH=$PATH:$GOBIN:"/home/francisco/Applications/appengine/google_appengine/"
