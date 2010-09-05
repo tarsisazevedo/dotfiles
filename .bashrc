@@ -127,10 +127,12 @@ export GTK_MODULES=globalmenu-gnome
 export GAE=/usr/local/google_appengine
 export GAE_USR=$GAE/lib
 
-export PYTHONPATH=/home/francisco/Projetos/lettuce:$GAE:$GAE_USR/yaml/lib/
+export JYTHONPATH=$HOME/jython
+
+export PYTHONPATH=$HOME/Projetos/lettuce:$GAE:$GAE_USR/yaml/lib/
 export PYTHONPATH=$PYTHONPATH:$GAE_USR/webob:$GAE_USR/antlr3:$GAE_USR/ipaddr:$GAE_USR/cacerts
 
-export PATH=/home/francisco/Projetos/lettuce/lettuce:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+export PATH=/home/francisco/Projetos/lettuce/lettuce:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$JYTHONPATH/bin
 
 source /usr/local/bin/virtualenvwrapper.sh
 
@@ -150,7 +152,7 @@ function work () {
     bash --rcfile ~/.virtualenvrc
 }
 
-export JAVA_HOME=/usr/lib/jvm/java-6-sun/bin
+export JAVA_HOME=/usr/lib/jvm/java-6-sun
 export PATH=/home/francisco/Applications/android-sdk:$PATH
 
 export GOROOT=$HOME/Applications/go
