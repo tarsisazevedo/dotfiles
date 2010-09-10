@@ -70,7 +70,9 @@ function prompt {
 }
 prompt
 
-source /usr/local/bin/virtualenvwrapper.sh
+export VIRTUALENVWRAPPER_PYTHON=$HOME/Applications/Python/2.6/bin/python
+export VIRTUALENVWRAPPER_VIRTUALENV=$HOME/Applications/Python/2.6/bin/virtualenv
+source $HOME/Applications/Python/2.6/bin/virtualenvwrapper.sh
 
 function work () {
     typeset env_name="$1"
@@ -82,7 +84,7 @@ function work () {
 
     virtualenvwrapper_verify_workon_environment $env_name || return 1
 
-    echo "source ~/.profile
+    echo "source ~/.bash_profile
           workon $env_name" > ~/.virtualenvrc
 
     bash --rcfile ~/.virtualenvrc
