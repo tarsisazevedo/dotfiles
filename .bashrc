@@ -132,7 +132,9 @@ export LETTUCE_DEV_PATH=$HOME/Projetos/lettuce/lettuce
 export PYTHONPATH=$HOME/Projetos/lettuce:$GAE:$GAE_USR/yaml/lib/
 export PYTHONPATH=$PYTHONPATH:$GAE_USR/webob:$GAE_USR/antlr3:$GAE_USR/ipaddr:$GAE_USR/cacerts
 
-export PATH=$PATH:$LETTUCE_DEV_PATH:$JYTHONPATH/bin:$GAE
+export ANDROID=/usr/local/android_sdk
+
+export PATH=$PATH:$LETTUCE_DEV_PATH:$JYTHONPATH/bin:$GAE:$ANDROID/tools
 
 source /usr/local/bin/virtualenvwrapper.sh
 
