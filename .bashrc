@@ -99,7 +99,12 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+}
+
+parse_git_branch_with_brackets() {
+  typeset current_branch=$(parse_git_branch)
+  echo "($current_branch)"
 }
 
 function prompt {
@@ -155,3 +160,24 @@ function work () {
 }
 
 export JAVA_HOME=/usr/lib/jvm/java-6-sun
+
+# Push git changes. $1 = destination branch
+function git_push() {
+    typeset current_branch=$(parse_git_branch)
+    typeset destination_branch="$1"
+    if [ "$destination_branch" = "" ]
+    then
+        typeset destination_branch="master"
+    fi
+    git pull origin $destination_branch
+    if [ "$destination_branch" != "$current_branch" ]
+    then
+        git checkout $destination_branch
+        git merge $current_branch
+    fi
+    git push origin $destination_branch
+    if [ "$destination_branch" != "$current_branch" ]
+    then
+        git checkout $current_branch
+    fi
+}
