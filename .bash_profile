@@ -13,7 +13,12 @@ export GREP_COLOR='1;37'
 alias grep='grep --color=auto' # Always highlight grep search term
 
 parse_git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+}
+
+parse_git_branch_with_brackets() {
+  typeset current_branch=$(parse_git_branch)
+  echo "($current_branch)"
 }
 
 parse_current_rvm() {
@@ -63,9 +68,9 @@ function prompt {
   local current_rvm=parse_current_rvm
   if "$current_rvm" != ''
   then
-    export PS1="${WHITE}(\$(parse_current_rvm)) ${WHITE}\u${RED}@${PURPLE}\h ${CYAN}\w ${WHITE}\$(parse_git_branch) ${YELLOW}$ \[\e[m\]\[\e[m\]"
+    export PS1="${WHITE}(\$(parse_current_rvm)) ${WHITE}\u${RED}@${PURPLE}\h ${CYAN}\w ${WHITE}\$(parse_git_branch_with_brackets) ${YELLOW}$ \[\e[m\]\[\e[m\]"
   else
-    export PS1="${WHITE}\u${RED}@${PURPLE}\h ${CYAN}\w ${WHITE}\$(parse_git_branch) ${YELLOW}$ \[\e[m\]\[\e[m\]"
+    export PS1="${WHITE}\u${RED}@${PURPLE}\h ${CYAN}\w ${WHITE}\$(parse_git_branch_with_brackets) ${YELLOW}$ \[\e[m\]\[\e[m\]"
   fi
 }
 prompt
@@ -88,4 +93,15 @@ function work () {
           workon $env_name" > ~/.virtualenvrc
 
     bash --rcfile ~/.virtualenvrc
+}
+
+# Push git changes. $1 = destination branch
+function git_push() {
+    typeset current_branch=$(parse_git_branch)
+    typeset destination_branch="$1"
+    if [ "$destination_branch" = "" ]
+    then
+        typeset destination_branch="master"
+    fi
+    git checkout $destination_branch; git merge $current_branch; git pull origin $destination_branch; git push origin $destination_branch; git checkout $current_branch
 }
