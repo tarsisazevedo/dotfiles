@@ -103,5 +103,15 @@ function git_push() {
     then
         typeset destination_branch="master"
     fi
-    git checkout $destination_branch; git merge $current_branch; git pull origin $destination_branch; git push origin $destination_branch; git checkout $current_branch
+    git pull origin $destination_branch
+    if [ "$destination_branch" != "$current_branch" ]
+    then
+        git checkout $destination_branch
+        git merge $current_branch
+    fi
+    git push origin $destination_branch
+    if [ "$destination_branch" != "$current_branch" ]
+    then
+        git checkout $current_branch
+    fi
 }
