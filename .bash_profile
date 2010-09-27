@@ -18,7 +18,10 @@ parse_git_branch() {
 
 parse_git_branch_with_brackets() {
   typeset current_branch=$(parse_git_branch)
-  echo "($current_branch)"
+  if [ "$current_branch" != "" ]
+  then
+      echo "($current_branch)"
+  fi
 }
 
 parse_current_rvm() {
@@ -106,8 +109,7 @@ function git_push() {
     git pull origin $destination_branch
     if [ "$destination_branch" != "$current_branch" ]
     then
-        git checkout $destination_branch
-        git merge $current_branch
+        git checkout $destination_branch && git merge $current_branch
     fi
     git push origin $destination_branch
     if [ "$destination_branch" != "$current_branch" ]
