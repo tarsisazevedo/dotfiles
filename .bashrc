@@ -160,6 +160,10 @@ function work () {
 }
 
 export JAVA_HOME=/usr/lib/jvm/java-6-sun
+export M2_HOME=/usr/local/apache-maven/apache-maven-2.2.1
+export M2=$M2_HOME/bin
+export MAVEN_OPTS="-Xms256m -Xmx512m"
+export PATH=$M2:$JAVA_HOME/bin:$PATH
 
 # Push git changes. $1 = destination branch
 function git_push() {
