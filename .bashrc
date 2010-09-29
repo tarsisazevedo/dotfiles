@@ -104,7 +104,10 @@ parse_git_branch() {
 
 parse_git_branch_with_brackets() {
   typeset current_branch=$(parse_git_branch)
-  echo "($current_branch)"
+  if [ "$current_branch" != "" ]
+  then
+      echo "($current_branch)"
+  fi
 }
 
 function prompt {
