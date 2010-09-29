@@ -40,11 +40,14 @@ echo "";
 ##
 
 export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Home
+export M2_HOME=/usr/local/apache-maven/apache-maven-2.2.1
+export M2=$M2_HOME/bin
+export MAVEN_OPTS="-Xms256m -Xmx512m"
 export ANT_HOME=$HOME/Applications/apache-ant-1.7.1
-# MacPorts Installer addition on 2010-03-26_at_16:40:20: adding an appropriate PATH variable for use with MacPorts.
 export PATH=$ANT_HOME/bin:/opt/local/bin:/opt/local/sbin:$PATH
 export EP_LIB=/Users/francisco/Documents/workspace/wine/env/ep6lib
-# Finished adapting your PATH environment variable for use with MacPorts.
+
+export PATH=$M2:$JAVA_HOME/bin:$PATH
 
 # 30m - Black
 # 31m - Red
