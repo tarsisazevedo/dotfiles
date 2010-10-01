@@ -25,7 +25,11 @@ parse_git_branch_with_brackets() {
 }
 
 parse_current_rvm() {
-  ~/.rvm/bin/rvm-prompt i v
+  typeset current_rvm=`~/.rvm/bin/rvm-prompt i v`
+  if [ "$current_rvm" != "" ]
+  then
+      echo "($current_rvm) "
+  fi
 }
 
 # WELCOME MESSAGE
@@ -71,13 +75,7 @@ function prompt {
 	local CYAN="\[\033[0;36m\]"
 	local WHITE="\[\033[0;37m\]"
 	local WHITEBOLD="\[\033[1;37m\]"
-  local current_rvm=parse_current_rvm
-  if "$current_rvm" != ''
-  then
-    export PS1="${WHITE}(\$(parse_current_rvm)) ${WHITE}\u${RED}@${PURPLE}\h ${CYAN}\w ${WHITE}\$(parse_git_branch_with_brackets) ${YELLOW}$ \[\e[m\]\[\e[m\]"
-  else
-    export PS1="${WHITE}\u${RED}@${PURPLE}\h ${CYAN}\w ${WHITE}\$(parse_git_branch_with_brackets) ${YELLOW}$ \[\e[m\]\[\e[m\]"
-  fi
+    export PS1="${WHITE}\$(parse_current_rvm)${WHITE}\u${RED}@${PURPLE}\h ${CYAN}\w ${WHITE}\$(parse_git_branch_with_brackets) ${YELLOW}$ \[\e[m\]\[\e[m\]"
 }
 prompt
 
