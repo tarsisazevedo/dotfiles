@@ -142,7 +142,7 @@ export PYTHONPATH=$PYTHONPATH:$GAE_USR/webob:$GAE_USR/antlr3:$GAE_USR/ipaddr:$GA
 
 export ANDROID=/usr/local/android_sdk
 
-export PATH=$PATH:$LETTUCE_DEV_PATH:$JYTHONPATH/bin:$GAE:$ANDROID/tools
+export PATH=$PATH:$LETTUCE_DEV_PATH:$JYTHONPATH/bin:$GAE:$ANDROID/tools:$HOME/local/bin
 
 source /usr/local/bin/virtualenvwrapper.sh
 
