@@ -75,7 +75,8 @@ function prompt {
 	local CYAN="\[\033[0;36m\]"
 	local WHITE="\[\033[0;37m\]"
 	local WHITEBOLD="\[\033[1;37m\]"
-    export PS1="${WHITE}\$(parse_current_rvm)${WHITE}\u${RED}@${PURPLE}\h ${CYAN}\w ${WHITE}\$(parse_git_branch_with_brackets) ${YELLOW}$ \[\e[m\]\[\e[m\]"
+    export PS1="${WHITE}\$(parse_current_rvm)${WHITE}\u${RED}@${PURPLE}\h ${CYAN}\w ${WHITE}\$(parse_git_branch_with_brackets)
+${YELLOW}$ \[\e[m\]\[\e[m\]"
 }
 prompt
 
