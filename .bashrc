@@ -138,14 +138,9 @@ export GAE=/usr/local/google_appengine
 export GAE_USR=$GAE/lib
 
 export JYTHONPATH=$HOME/jython
-export LETTUCE_DEV_PATH=$HOME/Projetos/lettuce/lettuce
-
-export PYTHONPATH=$HOME/Projetos/lettuce:$GAE:$GAE_USR/yaml/lib/
-export PYTHONPATH=$PYTHONPATH:$GAE_USR/webob:$GAE_USR/antlr3:$GAE_USR/ipaddr:$GAE_USR/cacerts
-
+export PYTHONPATH=$GAE:$GAE_USR/yaml/lib/:$PYTHONPATH:$GAE_USR/webob:$GAE_USR/antlr3:$GAE_USR/ipaddr:$GAE_USR/cacerts
 export ANDROID=/usr/local/android_sdk
-
-export PATH=$PATH:$LETTUCE_DEV_PATH:$JYTHONPATH/bin:$GAE:$ANDROID/tools:$HOME/local/bin
+export PATH=$PATH:$JYTHONPATH/bin:$GAE:$ANDROID/tools:$HOME/local/bin
 
 source /usr/local/bin/virtualenvwrapper.sh
 
