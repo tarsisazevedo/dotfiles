@@ -83,6 +83,7 @@ prompt
 export VIRTUALENVWRAPPER_PYTHON=$HOME/Applications/Python/2.6/bin/python
 export VIRTUALENVWRAPPER_VIRTUALENV=$HOME/Applications/Python/2.6/bin/virtualenv
 source $HOME/Applications/Python/2.6/bin/virtualenvwrapper.sh
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 function work () {
     typeset env_name="$1"
