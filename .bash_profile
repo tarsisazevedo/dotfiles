@@ -52,7 +52,6 @@ export PATH=$ANT_HOME/bin:/opt/local/bin:/opt/local/sbin:$PATH
 export EP_LIB=/Users/francisco/Documents/workspace/wine/env/ep6lib
 export JYTHONPATH=$HOME/jython
 export PATH=$M2:$JAVA_HOME/bin:$PATH:$JYTHONPATH/bin
-export CLASSPATH=$CLASSPATH:$HOME/Applications/jars
 
 # 30m - Black
 # 31m - Red
