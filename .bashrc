@@ -137,10 +137,10 @@ echo "";
 export GAE=/usr/local/google_appengine
 export GAE_USR=$GAE/lib
 
-export JYTHON_HOME=$HOME/jython
+export JYTHONPATH=$HOME/jython
 export PYTHONPATH=$GAE:$GAE_USR/yaml/lib/:$PYTHONPATH:$GAE_USR/webob:$GAE_USR/antlr3:$GAE_USR/ipaddr:$GAE_USR/cacerts
 export ANDROID=/usr/local/android_sdk
-export PATH=$PATH:$JYTHON_HOME/bin:$GAE:$ANDROID/tools:$HOME/local/bin
+export PATH=$PATH:$JYTHONPATH/bin:$GAE:$ANDROID/tools:$HOME/local/bin
 
 source /usr/local/bin/virtualenvwrapper.sh
 
