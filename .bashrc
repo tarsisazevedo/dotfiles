@@ -137,10 +137,10 @@ echo "";
 export GAE=/usr/local/google_appengine
 export GAE_USR=$GAE/lib
 
-export JYTHONPATH=$HOME/jython
+export JYTHON_HOME=$HOME/jython
 export PYTHONPATH=$GAE:$GAE_USR/yaml/lib/:$PYTHONPATH:$GAE_USR/webob:$GAE_USR/antlr3:$GAE_USR/ipaddr:$GAE_USR/cacerts
 export ANDROID=/usr/local/android_sdk
-export PATH=$PATH:$JYTHONPATH/bin:$GAE:$ANDROID/tools:$HOME/local/bin
+export PATH=$PATH:$JYTHON_HOME/bin:$GAE:$ANDROID/tools:$HOME/local/bin
 
 source /usr/local/bin/virtualenvwrapper.sh
 
@@ -161,6 +161,7 @@ function work () {
 }
 
 export JAVA_HOME=/usr/lib/jvm/java-6-sun
+export CATALINA_HOME=$HOME/Applications/apache-tomcat-6.0.29
 export M2_HOME=/usr/local/apache-maven/apache-maven-2.2.1
 export M2=$M2_HOME/bin
 export MAVEN_OPTS="-Xms256m -Xmx512m"
