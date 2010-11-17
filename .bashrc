@@ -104,6 +104,10 @@ parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
 
+parse_hg_branch() {
+    hg prompt "({branch})" 2>/dev/null
+}
+
 parse_git_branch_with_brackets() {
   typeset current_branch=$(parse_git_branch)
   if [ "$current_branch" != "" ]
@@ -122,7 +126,7 @@ function prompt {
     local CYAN="\[\033[0;36m\]"
     local WHITE="\[\033[0;37m\]"
     local WHITEBOLD="\[\033[1;37m\]"
-    export PS1="${WHITE}\u${RED}@${PURPLE}\h ${CYAN}\w ${WHITE}\$(parse_git_branch_with_brackets)
+    export PS1="${WHITE}\u${RED}@${PURPLE}\h ${CYAN}\w ${WHITE}\$(parse_git_branch_with_brackets)${WHITE}\$(parse_hg_branch)
 ${YELLOW}$ \[\e[m\]\[\e[m\]"
 }
 
