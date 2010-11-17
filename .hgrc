@@ -4,6 +4,7 @@ username = Francisco Souza <francisco@franciscosouza.net>
 [extensions]
 prompt = $HOME/Projetos/hg-prompt/prompt.py
 color = 
+hgext.bookmarks =
 hggit =
 
 [color]
