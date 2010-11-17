@@ -3,3 +3,12 @@ username = Francisco Souza <francisco@franciscosouza.net>
 
 [extensions]
 prompt = $HOME/Projetos/hg-prompt/prompt.py
+color = 
+
+[color]
+status.modified = yellow bold
+status.added = green bold
+status.removed = red bold
+status.deleted = cyan bold
+status.unknown = magenta bold
+status.ignored = black bold
