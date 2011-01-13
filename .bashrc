@@ -105,7 +105,7 @@ parse_git_branch() {
 }
 
 parse_hg_branch() {
-    hg prompt "({branch})" 2>/dev/null
+  hg branch 2> /dev/null | awk '{print $1}'
 }
 
 parse_git_branch_with_brackets() {
