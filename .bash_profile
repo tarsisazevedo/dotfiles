@@ -39,19 +39,9 @@ echo -e ""; cal;
 echo -ne "Up time: ";uptime | awk /'up/ {print $3,$4}'
 echo "";
 
-##
-# Your previous /Users/francisco/.bash_profile file was backed up as /Users/francisco/.bash_profile.macports-saved_2010-03-26_at_16:40:20
-##
-
-export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Home
-export M2_HOME=/usr/local/apache-maven/apache-maven-2.2.1
-export M2=$M2_HOME/bin
-export MAVEN_OPTS="-Xms256m -Xmx512m"
-export ANT_HOME=$HOME/Applications/apache-ant-1.7.1
-export PATH=$ANT_HOME/bin:/opt/local/bin:/opt/local/sbin:$PATH
-export EP_LIB=/Users/francisco/Documents/workspace/wine/env/ep6lib
-export JYTHONPATH=$HOME/jython
-export PATH=$M2:$JAVA_HOME/bin:$PATH:$JYTHONPATH/bin
+# Android path
+export ANDROID_HOME=/opt/android-sdk
+export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/opt/local/bin:/opt/local/sbin:$PATH
 
 # 30m - Black
 # 31m - Red
@@ -80,9 +70,7 @@ ${YELLOW}$ \[\e[m\]\[\e[m\]"
 }
 prompt
 
-export VIRTUALENVWRAPPER_PYTHON=$HOME/Applications/Python/2.6/bin/python
-export VIRTUALENVWRAPPER_VIRTUALENV=$HOME/Applications/Python/2.6/bin/virtualenv
-source $HOME/Applications/Python/2.6/bin/virtualenvwrapper.sh
+source `which virtualenvwrapper.sh`
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 function work () {
@@ -111,3 +99,8 @@ function git_push() {
     fi
     git pull origin $destination_branch && git checkout $destination_branch && git merge $current_branch && git push origin $destination_branch && git checkout $current_branch
 }
+
+#Daqui pra baixo não toca
+export PYTHONPATH=$PYTHONPATH:$HOME/Projetos/dynamo
+export PYTHONPATH=/Users/francisco.souza/Projetos/publicacao-core/publicacao/:$PYTHONPATH
+export VIRTUOSO_HOME=/usr/local/Cellar/virtuoso/6.1.2
