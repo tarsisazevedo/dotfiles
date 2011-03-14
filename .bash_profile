@@ -100,7 +100,6 @@ function git_push() {
     git pull origin $destination_branch && git checkout $destination_branch && git merge $current_branch && git push origin $destination_branch && git checkout $current_branch
 }
 
-#Daqui pra baixo não toca
 export PYTHONPATH=$PYTHONPATH:$HOME/Projetos/dynamo
 export PYTHONPATH=/Users/francisco.souza/Projetos/publicacao-core/publicacao/:$PYTHONPATH
 export VIRTUOSO_HOME=/usr/local/Cellar/virtuoso/6.1.2
