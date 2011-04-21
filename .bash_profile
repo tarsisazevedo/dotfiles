@@ -41,7 +41,7 @@ echo "";
 
 # Android path
 export ANDROID_HOME=/opt/android-sdk
-export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/opt/local/bin:/opt/local/sbin:$PATH
+export PATH=/opt/python/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/opt/local/bin:/opt/local/sbin:$PATH
 
 # 30m - Black
 # 31m - Red
