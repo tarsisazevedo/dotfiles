@@ -101,5 +101,10 @@ function git_push() {
 }
 
 export PYTHONPATH=$PYTHONPATH:$HOME/Projetos/dynamo
-export PYTHONPATH=/Users/francisco.souza/Projetos/publicacao-core/publicacao/:$PYTHONPATH
+export PYTHONPATH=$HOME/lib/python:$PYTHONPATH
 export VIRTUOSO_HOME=/usr/local/Cellar/virtuoso/6.1.2
+
+# Setting PATH for Python 2.7
+# The orginal version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
+export PATH
