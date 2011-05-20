@@ -39,9 +39,14 @@ echo -e ""; cal;
 echo -ne "Up time: ";uptime | awk /'up/ {print $3,$4}'
 echo "";
 
+# Go stuff
+export GOHOME=$HOME/lib/go
+export GOBIN=$GOHOME/bin
+
 # Android path
 export ANDROID_HOME=/opt/android-sdk
-export PATH=/opt/python/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/opt/local/bin:/opt/local/sbin:$PATH
+export PATH=/opt/python/bin:$GOBIN:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/opt/local/bin:/opt/local/sbin:$PATH
+PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 
 # 30m - Black
 # 31m - Red
@@ -103,8 +108,3 @@ function git_push() {
 export PYTHONPATH=$PYTHONPATH:$HOME/Projetos/dynamo
 export PYTHONPATH=$HOME/lib/python:$PYTHONPATH
 export VIRTUOSO_HOME=/usr/local/Cellar/virtuoso/6.1.2
-
-# Setting PATH for Python 2.7
-# The orginal version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
-export PATH
