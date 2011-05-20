@@ -40,8 +40,8 @@ echo -ne "Up time: ";uptime | awk /'up/ {print $3,$4}'
 echo "";
 
 # Go stuff
-export GOHOME=$HOME/lib/go
-export GOBIN=$GOHOME/bin
+export GOROOT=$HOME/lib/go
+export GOBIN=$GOROOT/bin
 
 # Android path
 export ANDROID_HOME=/opt/android-sdk
