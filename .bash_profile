@@ -32,20 +32,13 @@ parse_current_rvm() {
   fi
 }
 
-# WELCOME MESSAGE
-echo -e ""
-echo -ne "Today is "; date
-echo -e ""; cal;
-echo -ne "Up time: ";uptime | awk /'up/ {print $3,$4}'
-echo "";
-
 # Go stuff
 export GOROOT=$HOME/lib/go
 export GOBIN=$GOROOT/bin
 
 # Android path
 export ANDROID_HOME=/opt/android-sdk
-export PATH=/opt/python/bin:$GOBIN:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/opt/local/bin:/opt/local/sbin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:/opt/python/bin:$GOBIN:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/opt/local/bin:/opt/local/sbin:$PATH
 PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 
 # 30m - Black
@@ -108,3 +101,8 @@ function git_push() {
 export PYTHONPATH=$PYTHONPATH:$HOME/Projetos/dynamo
 export PYTHONPATH=$HOME/lib/python:$PYTHONPATH
 export VIRTUOSO_HOME=/usr/local/Cellar/virtuoso/6.1.2
+
+# Setting PATH for MacPython 2.6
+# The orginal version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/2.6/bin:${PATH}"
+export PATH
