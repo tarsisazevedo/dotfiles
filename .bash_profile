@@ -24,6 +24,10 @@ parse_git_branch_with_brackets() {
   fi
 }
 
+parse_hg_branch_with_brackets() {
+  hg branch 2> /dev/null | awk '{print "("$1")"}'
+}
+
 parse_current_rvm() {
   typeset current_rvm=`~/.rvm/bin/rvm-prompt i v`
   if [ "$current_rvm" != "" ]
@@ -63,7 +67,7 @@ function prompt {
 	local CYAN="\[\033[0;36m\]"
 	local WHITE="\[\033[0;37m\]"
 	local WHITEBOLD="\[\033[1;37m\]"
-    export PS1="${WHITE}\$(parse_current_rvm)${WHITE}\u${RED}@${PURPLE}\h ${CYAN}\w ${WHITE}\$(parse_git_branch_with_brackets)
+    export PS1="${WHITE}\$(parse_current_rvm)${WHITE}\u${RED}@${PURPLE}\h ${CYAN}\w ${WHITE}\$(parse_git_branch_with_brackets)${WHITE}\$(parse_hg_branch_with_brackets)
 ${YELLOW}$ \[\e[m\]\[\e[m\]"
 }
 prompt
