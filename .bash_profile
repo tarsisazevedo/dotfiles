@@ -110,7 +110,7 @@ function start_g1_app() {
         touch "${1}/${file}"
     done
 
-    for directory in "$1/tests" "$1/tests/unit" "$1/tests/functional" "$1/features" 
+    for directory in "$1/tests" "$1/tests/unit" "$1/tests/functional"
     do
         mkdir -p ${directory}
         touch "${directory}/__init__.py"
