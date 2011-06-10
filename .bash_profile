@@ -103,6 +103,20 @@ function git_push() {
     git pull origin $destination_branch && git checkout $destination_branch && git merge $current_branch && git push origin $destination_branch && git checkout $current_branch
 }
 
+function start_g1_app() {
+    mkdir -p $1
+    for file in "__init__.py" "models.py" "views.py" "widgets.py"
+    do
+        touch "${1}/${file}"
+    done
+
+    for directory in "$1/tests" "$1/tests/unit" "$1/tests/functional" "$1/features" 
+    do
+        mkdir -p ${directory}
+        touch "${directory}/__init__.py"
+    done
+}
+
 export PYTHONPATH=$PYTHONPATH:$HOME/Projetos/dynamo
 export PYTHONPATH=$HOME/lib/python:$PYTHONPATH
 export VIRTUOSO_HOME=/usr/local/Cellar/virtuoso/6.1.2
