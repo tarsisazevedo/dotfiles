@@ -39,7 +39,7 @@ parse_current_rvm() {
 # Go stuff
 export GOROOT=$HOME/lib/go
 export GOBIN=$GOROOT/bin
-export GOMAXPROCS=4
+export GOMAXPROCS=1
 
 # Android path
 export ANDROID_HOME=/opt/android-sdk
