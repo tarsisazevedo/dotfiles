@@ -29,8 +29,8 @@ parse_hg_branch_with_brackets() {
 }
 
 parse_current_rvm() {
-  typeset current_rvm=`~/.rvm/bin/rvm-prompt i v`
-  if [ "$current_rvm" != "" ]
+  typeset current_rvm=`rvm current i v`
+  if [ "$current_rvm" != "system" ]
   then
       echo "($current_rvm) "
   fi
@@ -74,7 +74,7 @@ ${YELLOW}$ \[\e[m\]\[\e[m\]"
 prompt
 
 source `which virtualenvwrapper.sh`
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+[[ -s "/Users/francisco.souza/.rvm/scripts/rvm" ]] && source "/Users/francisco.souza/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
 function work () {
     typeset env_name="$1"
