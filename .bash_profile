@@ -39,6 +39,8 @@ parse_current_rvm() {
 # Go stuff
 export GOROOT=$HOME/lib/go
 export GOBIN=$GOROOT/bin
+export GOOS=darwin
+export GOARCH=amd64
 export GOMAXPROCS=1
 
 # Android path
@@ -117,8 +119,7 @@ function start_g1_app() {
     done
 }
 
-export PYTHONPATH=$PYTHONPATH:$HOME/Projetos/dynamo
-export PYTHONPATH=$HOME/lib/python:$PYTHONPATH
+export PYTHONPATH=$HOME/Projetos/publicacao-core/publicacao:$HOME/Projetos/dynamo:$HOME/lib/python:$PYTHONPATH
 export VIRTUOSO_HOME=/usr/local/Cellar/virtuoso/6.1.2
 
 # Setting PATH for MacPython 2.6
