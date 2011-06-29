@@ -47,8 +47,9 @@ export GOMAXPROCS=1
 export ANDROID_HOME=/opt/android-sdk
 export PATH=/usr/local/bin:/usr/local/sbin:/opt/python/bin:$GOBIN:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/opt/local/bin:/opt/local/sbin:$PATH
 
-# Setting PATH for MacPython 2.6
-PATH="/Library/Frameworks/Python.framework/Versions/2.6/bin:${PATH}"
+# Setting PATH for MacPython 2.5, 2.6 and 2.7
+PYTHON_VERSIONS_PATH="/Library/Frameworks/Python.framework/Versions"
+PATH="$PYTHON_VERSIONS_PATH/Current/bin:$PYTHON_VERSIONS_PATH/2.5/bin:$PYTHON_VERSIONS_PATH/2.6/bin:$PYTHON_VERSIONS_PATH/2.7/bin:${PATH}"
 export PATH
 
 # 30m - Black
@@ -125,4 +126,3 @@ function start_g1_app() {
 
 export PYTHONPATH=$HOME/Projetos/publicacao-core/publicacao:$HOME/Projetos/dynamo:$HOME/lib/python:$PYTHONPATH
 export VIRTUOSO_HOME=/usr/local/Cellar/virtuoso/6.1.2
-
