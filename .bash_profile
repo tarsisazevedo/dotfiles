@@ -107,7 +107,7 @@ function git_push() {
     then
         typeset destination_branch="master"
     fi
-    git pull origin $destination_branch && git checkout $destination_branch && git merge $current_branch && git push origin $destination_branch && git checkout $current_branch
+    git checkout $destination_branch && git pull origin $destination_branch && git merge $current_branch && git push origin $destination_branch && git checkout $current_branch
 }
 
 function start_g1_app() {
