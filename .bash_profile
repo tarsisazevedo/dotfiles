@@ -52,6 +52,11 @@ PYTHON_VERSIONS_PATH="/Library/Frameworks/Python.framework/Versions"
 PATH="$PYTHON_VERSIONS_PATH/Current/bin:$PYTHON_VERSIONS_PATH/2.5/bin:$PYTHON_VERSIONS_PATH/2.6/bin:$PYTHON_VERSIONS_PATH/2.7/bin:${PATH}"
 export PATH
 
+# aliases
+alias vi=mvim
+alias vim=mvim
+alias gvim=mvim
+
 # 30m - Black
 # 31m - Red
 # 32m - Green
