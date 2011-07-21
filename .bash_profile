@@ -1,6 +1,9 @@
 # Make bash check its window size after a process completes
 shopt -s checkwinsize
 
+# For Lion
+export ARCHFLAGS='-arch i386 -arch x86_64'
+
 # LS COLORS
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
