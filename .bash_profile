@@ -39,6 +39,10 @@ parse_current_rvm() {
   fi
 }
 
+#ARQ
+export ARQROOT=$HOME/lib/arq
+export PATH=$PATH:$ARQROOT/bin
+
 # Go stuff
 export GOROOT=$HOME/lib/go
 export GOBIN=$GOROOT/bin
