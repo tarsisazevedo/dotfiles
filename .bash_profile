@@ -8,35 +8,36 @@ export ARCHFLAGS='-arch i386 -arch x86_64'
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
-# ENVIRONMENT
-
-# GREP
-export GREP_OPTIONS='--color=auto'
-export GREP_COLOR='1;37'
-alias grep='grep --color=auto' # Always highlight grep search term
-
 parse_git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
 
 parse_git_branch_with_brackets() {
-  typeset current_branch=$(parse_git_branch)
-  if [ "$current_branch" != "" ]
-  then
-      echo "($current_branch)"
-  fi
+    typeset current_branch=$(parse_git_branch)
+    if [ "$current_branch" != "" ]
+    then
+        echo "git:${current_branch} "
+    fi
 }
 
 parse_hg_branch_with_brackets() {
-  hg branch 2> /dev/null | awk '{print "("$1")"}'
+    hg branch 2> /dev/null | awk '{print "hg:"$1" "}'
 }
 
 parse_current_rvm() {
-  typeset current_rvm=`rvm current i v`
-  if [ "$current_rvm" != "system" ]
-  then
-      echo "($current_rvm) "
-  fi
+    typeset current_rvm=`rvm current i v`
+    if [ "$current_rvm" != "system" ]
+    then
+        echo "rvm:${current_rvm} "
+    fi
+}
+
+parse_current_virtualenv() {
+    if [ $VIRTUAL_ENV ]
+    then
+        typeset virtualenv=`basename $VIRTUAL_ENV`
+        echo "virtualenv:${virtualenv} "
+    fi
 }
 
 #ARQ
@@ -75,65 +76,65 @@ alias gvim=mvim
 # Everything else is green...
 # 0 - Normal
 # 1 - Bold
-# 2 - 
+# 2 -
 function prompt {
-	local BLACK="\[\033[0;30m\]"
-	local RED="\[\033[0;31m\]"
-	local GREEN="\[\033[0;32m\]"
-	local YELLOW="\[\033[0;33m\]"
-	local BLUE="\[\033[0;34m\]"
-	local PURPLE="\[\033[0;35m\]"
-	local CYAN="\[\033[0;36m\]"
-	local WHITE="\[\033[0;37m\]"
-	local WHITEBOLD="\[\033[1;37m\]"
-    export PS1="${WHITE}\$(parse_current_rvm)${WHITEBOLD}\u${RED} at ${WHITEBOLD}\h ${RED}in ${GREEN}\w ${WHITE}\$(parse_git_branch_with_brackets)${WHITE}\$(parse_hg_branch_with_brackets)
-${YELLOW}$ \[\e[m\]\[\e[m\]"
+local BLACK="\[\033[0;30m\]"
+local RED="\[\033[0;31m\]"
+local GREEN="\[\033[0;32m\]"
+local YELLOW="\[\033[0;33m\]"
+local BLUE="\[\033[0;34m\]"
+local PURPLE="\[\033[0;35m\]"
+local CYAN="\[\033[0;36m\]"
+local WHITE="\[\033[0;37m\]"
+local WHITEBOLD="\[\033[1;37m\]"
+export PS1="${WHITE}\$(parse_current_virtualenv)\$(parse_current_rvm)\$(parse_git_branch_with_brackets)\$(parse_hg_branch_with_brackets)${GREEN}\W ${YELLOW}% \[\e[m\]\[\e[m\]"
 }
 prompt
 
 export VIRTUALENVWRAPPER_PYTHON=`which python`
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 source `which virtualenvwrapper.sh`
 [[ -s "/Users/francisco.souza/.rvm/scripts/rvm" ]] && source "/Users/francisco.souza/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
 function work () {
-    typeset env_name="$1"
-    if [ "$env_name" = "" ]
-    then
-        virtualenvwrapper_show_workon_options
-        return 1
-    fi
+typeset env_name="$1"
+if [ "$env_name" = "" ]
+then
+    virtualenvwrapper_show_workon_options
+    return 1
+fi
 
-    virtualenvwrapper_verify_workon_environment $env_name || return 1
+virtualenvwrapper_verify_workon_environment $env_name || return 1
 
-    echo "source ~/.bash_profile
-          workon $env_name" > ~/.virtualenvrc
+echo "source ~/.bash_profile
+workon $env_name" > ~/.virtualenvrc
 
-    bash --rcfile ~/.virtualenvrc
+bash --rcfile ~/.virtualenvrc
 }
 
 # Push git changes. $1 = destination branch
 function git_push() {
-    typeset current_branch=$(parse_git_branch)
-    typeset destination_branch="$1"
-    if [ "$destination_branch" = "" ]
-    then
-        typeset destination_branch="master"
-    fi
-    git checkout $destination_branch && git pull origin $destination_branch && git merge $current_branch && git push origin $destination_branch && git checkout $current_branch
+typeset current_branch=$(parse_git_branch)
+typeset destination_branch="$1"
+if [ "$destination_branch" = "" ]
+then
+    typeset destination_branch="master"
+fi
+git checkout $destination_branch && git pull origin $destination_branch && git merge $current_branch && git push origin $destination_branch && git checkout $current_branch
 }
 
 function start_g1_app() {
-    mkdir -p $1
-    for file in "__init__.py" "models.py" "views.py" "widgets.py"
-    do
-        touch "${1}/${file}"
-    done
+mkdir -p $1
+for file in "__init__.py" "models.py" "views.py" "widgets.py"
+do
+    touch "${1}/${file}"
+done
 
-    for directory in "$1/tests" "$1/tests/unit" "$1/tests/functional" "$1/tests/integration"
-    do
-        mkdir -p ${directory}
-        touch "${directory}/__init__.py"
-    done
+for directory in "$1/tests" "$1/tests/unit" "$1/tests/functional" "$1/tests/integration"
+do
+    mkdir -p ${directory}
+    touch "${directory}/__init__.py"
+done
 }
 
 export PYTHONPATH=$HOME/Projetos/publicacao-core/publicacao:$HOME/Projetos/dynamo:$HOME/lib/python:$PYTHONPATH
