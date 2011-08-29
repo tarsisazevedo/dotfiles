@@ -94,7 +94,7 @@ prompt
 export VIRTUALENVWRAPPER_PYTHON=`which python`
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 source `which virtualenvwrapper.sh`
-[[ -s "/Users/francisco.souza/.rvm/scripts/rvm" ]] && source "/Users/francisco.souza/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+[[ -s "${HOME}/.rvm/scripts/rvm" ]] && source "${HOME}/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
 function work () {
 typeset env_name="$1"
