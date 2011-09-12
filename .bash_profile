@@ -36,7 +36,7 @@ parse_current_virtualenv() {
     if [ $VIRTUAL_ENV ]
     then
         typeset virtualenv=`basename $VIRTUAL_ENV`
-        echo "virtualenv:${virtualenv} "
+        echo "venv:${virtualenv} "
     fi
 }
 
