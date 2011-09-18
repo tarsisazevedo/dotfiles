@@ -60,6 +60,8 @@ PYTHON_VERSIONS_PATH="/Library/Frameworks/Python.framework/Versions"
 PATH="$PYTHON_VERSIONS_PATH/Current/bin:$PYTHON_VERSIONS_PATH/2.5/bin:$PYTHON_VERSIONS_PATH/2.6/bin:$PYTHON_VERSIONS_PATH/2.7/bin:${PATH}"
 export PATH
 
+PIP_USE_MIRRORS=true
+
 # aliases
 alias vi=mvim
 alias vim=mvim
