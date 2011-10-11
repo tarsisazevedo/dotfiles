@@ -1,5 +1,5 @@
 [ui]
-username = Francisco Souza <francisco@franciscosouza.net>
+username = Francisco Souza <f@souza.cc>
 
 [extensions]
 prompt = $HOME/Projetos/hg-prompt/prompt.py
