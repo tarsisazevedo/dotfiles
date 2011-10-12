@@ -62,11 +62,6 @@ export PATH
 
 PIP_USE_MIRRORS=true
 
-# aliases
-alias vi=mvim
-alias vim=mvim
-alias gvim=mvim
-
 # 30m - Black
 # 31m - Red
 # 32m - Green
