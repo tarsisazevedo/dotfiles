@@ -3,9 +3,10 @@ username = Francisco Souza <f@souza.cc>
 
 [extensions]
 prompt = $HOME/Projetos/hg-prompt/prompt.py
-color = 
+color =
 hgext.bookmarks =
 hggit =
+purge =
 
 [color]
 status.modified = yellow bold
