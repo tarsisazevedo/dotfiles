@@ -84,7 +84,7 @@ local PURPLE="\[\033[0;35m\]"
 local CYAN="\[\033[0;36m\]"
 local WHITE="\[\033[0;37m\]"
 local WHITEBOLD="\[\033[1;37m\]"
-export PS1="${WHITE}\$(parse_current_virtualenv)\$(parse_current_rvm)\$(parse_git_branch_with_brackets)\$(parse_hg_branch_with_brackets)${GREEN}\W ${YELLOW}% \[\e[m\]\[\e[m\]"
+export PS1="${WHITE}\$(parse_current_virtualenv)\$(parse_current_rvm)\$(parse_git_branch_with_brackets)\$(parse_hg_branch_with_brackets)\W % \[\e[m\]\[\e[m\]"
 }
 prompt
 
