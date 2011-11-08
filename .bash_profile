@@ -16,19 +16,19 @@ parse_git_branch_with_brackets() {
     typeset current_branch=$(parse_git_branch)
     if [ "$current_branch" != "" ]
     then
-        echo "git:${current_branch} "
+        echo "g=${current_branch} "
     fi
 }
 
 parse_hg_branch_with_brackets() {
-    hg branch 2> /dev/null | awk '{print "hg:"$1" "}'
+    hg branch 2> /dev/null | awk '{print "h="$1" "}'
 }
 
 parse_current_rvm() {
     typeset current_rvm=`rvm current i v`
     if [ "$current_rvm" != "system" ]
     then
-        echo "rvm:${current_rvm} "
+        echo "r=${current_rvm} "
     fi
 }
 
@@ -36,7 +36,18 @@ parse_current_virtualenv() {
     if [ $VIRTUAL_ENV ]
     then
         typeset virtualenv=`basename $VIRTUAL_ENV`
-        echo "venv:${virtualenv} "
+        echo "v=${virtualenv} "
+    fi
+}
+
+current_directory() {
+    set -- "$PWD"
+    IFS="/"; declare -a parts=($*)
+    LEN=`expr ${#parts[@]} - 1`
+    dir=${parts[$LEN]}
+    user=`whoami`
+    if [ $dir != $user ]; then
+        echo $dir
     fi
 }
 
@@ -75,16 +86,8 @@ PIP_USE_MIRRORS=true
 # 1 - Bold
 # 2 -
 function prompt {
-local BLACK="\[\033[0;30m\]"
-local RED="\[\033[0;31m\]"
-local GREEN="\[\033[0;32m\]"
-local YELLOW="\[\033[0;33m\]"
-local BLUE="\[\033[0;34m\]"
-local PURPLE="\[\033[0;35m\]"
-local CYAN="\[\033[0;36m\]"
-local WHITE="\[\033[0;37m\]"
-local WHITEBOLD="\[\033[1;37m\]"
-export PS1="${WHITE}\$(parse_current_virtualenv)\$(parse_current_rvm)\$(parse_git_branch_with_brackets)\$(parse_hg_branch_with_brackets)\W % \[\e[m\]\[\e[m\]"
+    local WHITE="\[\033[0;37m\]"
+    export PS1="${WHITE}\$(parse_current_virtualenv)\$(parse_current_rvm)\$(parse_git_branch_with_brackets)\$(parse_hg_branch_with_brackets)w=\$(current_directory)% \[\e[m\]\[\e[m\]"
 }
 prompt
 
