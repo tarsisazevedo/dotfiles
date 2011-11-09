@@ -113,7 +113,7 @@ bash --rcfile ~/.virtualenvrc
 }
 
 # Push git changes. $1 = destination branch
-function git_push() {
+function gpush() {
 typeset current_branch=$(parse_git_branch)
 typeset destination_branch="$1"
 if [ "$destination_branch" = "" ]
