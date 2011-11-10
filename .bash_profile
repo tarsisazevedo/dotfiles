@@ -8,6 +8,11 @@ export ARCHFLAGS='-arch i386 -arch x86_64'
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
+avim() {
+    local files=`find . -name "${1}" | xargs`
+    vim -p $files
+}
+
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
