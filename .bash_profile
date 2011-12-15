@@ -8,6 +8,9 @@ export ARCHFLAGS='-arch i386 -arch x86_64'
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
+vim=/Applications/MacVim.app/Contents/MacOS/Vim
+alias vim=$vim
+
 avim() {
     local files=`find . -name "${1}" | xargs`
     vim -p $files
@@ -144,3 +147,8 @@ done
 
 export PYTHONPATH=$HOME/lib/python:$PYTHONPATH
 export VIRTUOSO_HOME=/usr/local/Cellar/virtuoso/6.1.2
+
+# Setting PATH for Python 2.7
+# The orginal version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
+export PATH
