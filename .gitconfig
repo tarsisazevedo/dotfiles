@@ -30,4 +30,4 @@
 	lg = log -p
 	who = shortlog -s --
 [core]
-	editor = /usr/local/bin/vim
+	editor = /Applications/MacVim.app/Contents/MacOS/Vim

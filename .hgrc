@@ -1,6 +1,6 @@
 [ui]
 username = Francisco Souza <f@souza.cc>
-editor = /usr/local/bin/vim
+editor = /Applications/MacVim.app/Contents/MacOS/Vim
 
 [extensions]
 prompt = $HOME/Projetos/hg-prompt/prompt.py
