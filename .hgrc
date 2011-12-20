@@ -16,3 +16,6 @@ status.removed = red bold
 status.deleted = cyan bold
 status.unknown = magenta bold
 status.ignored = black bold
+
+[alias]
+slog = log --template '{rev}:{node|short} {desc|firstline}\n'
