@@ -6,7 +6,7 @@ export ARCHFLAGS='-arch i386 -arch x86_64'
 
 # LS COLORS
 export CLICOLOR=1
-export LSCOLORS=ExFxCxDxBxegedabagacad
+export LSCOLORS=ExFxCxDxBxegedabagaxax
 
 vim=/Applications/MacVim.app/Contents/MacOS/Vim
 alias vim=$vim
