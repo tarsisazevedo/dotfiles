@@ -73,7 +73,7 @@ export GOMAXPROCS=1
 
 # Android path
 export ANDROID_HOME=/opt/android-sdk
-export PATH=/usr/local/bin:/usr/local/sbin:/opt/python/bin:$GOBIN:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/opt/local/bin:/opt/local/sbin:$PLAN9/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:/opt/python/bin:$GOBIN:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/opt/local/bin:/opt/local/sbin:$PATH:$PLAN9/bin
 
 # Setting PATH for MacPython 2.5, 2.6 and 2.7
 PYTHON_VERSIONS_PATH="/Library/Frameworks/Python.framework/Versions"
