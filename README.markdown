@@ -1,5 +1,3 @@
-#Francisco Souza bashfiles
+#Personal bash files
 
-##Why .bashrc and .bash_profile?
-
-I use bash_profile on Mac OS X and bashrc on Linux.
+Currently used on a OS X Lion system.
