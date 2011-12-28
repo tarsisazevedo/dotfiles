@@ -12,8 +12,7 @@ vim=/Applications/MacVim.app/Contents/MacOS/Vim
 alias vim=$vim
 
 avim() {
-    local files=`find . -name "${1}" | xargs`
-    vim -p $files
+    vim -p `find . -name "${1}"`
 }
 
 parse_git_branch() {
