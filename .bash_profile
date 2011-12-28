@@ -11,10 +11,6 @@ export LSCOLORS=ExFxCxDxAxegedabagaxax
 vim=/Applications/MacVim.app/Contents/MacOS/Vim
 alias vim=$vim
 
-avim() {
-    vim -p `find . -name "${1}"`
-}
-
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
@@ -79,20 +75,6 @@ PYTHON_VERSIONS_PATH="/Library/Frameworks/Python.framework/Versions"
 PATH="$PYTHON_VERSIONS_PATH/Current/bin:$PYTHON_VERSIONS_PATH/2.5/bin:$PYTHON_VERSIONS_PATH/2.6/bin:$PYTHON_VERSIONS_PATH/2.7/bin:${PATH}"
 export PATH
 
-PIP_USE_MIRRORS=true
-
-# 30m - Black
-# 31m - Red
-# 32m - Green
-# 33m - Yellow
-# 34m - Blue
-# 35m - Purple
-# 36m - Cyan
-# 37m - White
-# Everything else is green...
-# 0 - Normal
-# 1 - Bold
-# 2 -
 function prompt {
     local WHITE="\[\033[0;37m\]"
     export PS1="${WHITE}\$(parse_current_virtualenv)\$(parse_current_rvm)\$(parse_git_branch_with_brackets)\$(parse_hg_branch_with_brackets)w=\$(current_directory)% \[\e[m\]\[\e[m\]"
@@ -105,44 +87,44 @@ source `which virtualenvwrapper.sh`
 [[ -s "${HOME}/.rvm/scripts/rvm" ]] && source "${HOME}/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
 function work () {
-typeset env_name="$1"
-if [ "$env_name" = "" ]
-then
-    virtualenvwrapper_show_workon_options
-    return 1
-fi
+    typeset env_name="$1"
+    if [ "$env_name" = "" ]
+    then
+        virtualenvwrapper_show_workon_options
+        return 1
+    fi
 
-virtualenvwrapper_verify_workon_environment $env_name || return 1
+    virtualenvwrapper_verify_workon_environment $env_name || return 1
 
-echo "source ~/.bash_profile
-workon $env_name" > ~/.virtualenvrc
+    echo "source ~/.bash_profile
+    workon $env_name" > ~/.virtualenvrc
 
-bash --rcfile ~/.virtualenvrc
+    bash --rcfile ~/.virtualenvrc
 }
 
 # Push git changes. $1 = destination branch
 function gpush() {
-typeset current_branch=$(parse_git_branch)
-typeset destination_branch="$1"
-if [ "$destination_branch" = "" ]
-then
-    typeset destination_branch="master"
-fi
-git checkout $destination_branch && git pull origin $destination_branch && git merge $current_branch && git push origin $destination_branch && git checkout $current_branch
+    typeset current_branch=$(parse_git_branch)
+    typeset destination_branch="$1"
+    if [ "$destination_branch" = "" ]
+    then
+        typeset destination_branch="master"
+    fi
+    git checkout $destination_branch && git pull origin $destination_branch && git merge $current_branch && git push origin $destination_branch && git checkout $current_branch
 }
 
 function start_g1_app() {
-mkdir -p $1
-for file in "__init__.py" "models.py" "views.py" "widgets.py"
-do
-    touch "${1}/${file}"
-done
+    mkdir -p $1
+    for file in "__init__.py" "models.py" "views.py" "widgets.py"
+    do
+        touch "${1}/${file}"
+    done
 
-for directory in "$1/tests" "$1/tests/unit" "$1/tests/functional" "$1/tests/integration"
-do
-    mkdir -p ${directory}
-    touch "${directory}/__init__.py"
-done
+    for directory in "$1/tests" "$1/tests/unit" "$1/tests/functional" "$1/tests/integration"
+    do
+        mkdir -p ${directory}
+        touch "${directory}/__init__.py"
+    done
 }
 
 export PYTHONPATH=$HOME/lib/python:$PYTHONPATH
