@@ -128,7 +128,7 @@ function start_g1_app() {
 }
 
 export PYTHONPATH=$HOME/lib/python:$PYTHONPATH
-export VIRTUOSO_HOME=/usr/local/Cellar/virtuoso/6.1.2
+export VIRTUOSO_HOME=/usr/local/virtuoso-opensource
 
 # Setting PATH for Python 2.7
 # The orginal version is saved in .bash_profile.pysave
