@@ -61,6 +61,7 @@ export PATH=$PATH:$ARQROOT/bin
 # Go and Plan9 stuff
 export PLAN9=$HOME/lib/plan9port
 export GOROOT=$HOME/lib/go
+export GOPATH=$HOME/lib/gopath
 export GOBIN=$GOROOT/bin
 export GOOS=darwin
 export GOARCH=amd64
