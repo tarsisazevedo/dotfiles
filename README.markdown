@@ -1,3 +1,3 @@
 #Personal $HOME files
 
-Currently used on a OS X Lion system.
+Currently used in a OS X Lion system.
