@@ -6,8 +6,6 @@ setenv LSCOLORS ExFxCxDxAxegedabagaxax
 setenv GOROOT $HOME/lib/go
 setenv GOPATH $HOME/lib/gopath
 setenv GOBIN $GOROOT/bin
-setenv GOOS darwin
-setenv GOARCH amd64
 setenv GOMAXPROCS 1
 
 set path=(/usr/local/bin /usr/local/sbin ${GOBIN} /opt/local/bin $path)
