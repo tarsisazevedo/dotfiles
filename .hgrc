@@ -3,10 +3,8 @@ username = Francisco Souza <f@souza.cc>
 editor = /Applications/MacVim.app/Contents/MacOS/Vim
 
 [extensions]
-prompt = $HOME/Projetos/hg-prompt/prompt.py
 color =
 hgext.bookmarks =
-hggit =
 purge =
 
 [color]
