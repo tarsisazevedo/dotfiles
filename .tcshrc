@@ -10,7 +10,7 @@ setenv GOOS darwin
 setenv GOARCH amd64
 setenv GOMAXPROCS 1
 
-set path=(/usr/local/bin /usr/local/sbin /opt/python/bin ${GOBIN} /opt/local/bin /opt/local/sbin $path)
+set path=(/usr/local/bin /usr/local/sbin ${GOBIN} /opt/local/bin $path)
 
 setenv EDITOR vim
 setenv PAGER less
