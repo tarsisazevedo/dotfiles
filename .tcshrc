@@ -24,7 +24,5 @@ alias parse_git_branch "git branch >& /dev/null && git branch | sed -e '/^[^*]/d
 alias parse_hg_branch "hg branch >& /dev/null && hg branch | awk '{print $1}' | sed -e 's/\(.*\)/h=\1 /'"
 
 alias setprompt 'set prompt="`parse_git_branch``parse_hg_branch`w=$cwd:t% "'
-alias cd 'cd \!*;setprompt'
-alias pushd 'pushd \!*;setprompt'
-alias popd 'popd \!*;setprompt'
+alias cwdcmd setprompt
 setprompt
