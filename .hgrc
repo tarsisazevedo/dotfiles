@@ -1,6 +1,6 @@
 [ui]
 username = Francisco Souza <f@souza.cc>
-editor = /Applications/MacVim.app/Contents/MacOS/Vim
+editor = /usr/local/vim
 
 [extensions]
 color =
