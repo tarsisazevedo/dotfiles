@@ -22,6 +22,8 @@ setenv VIRTUOSO_HOME /usr/local/virtuoso-opensource
 
 alias parse_git_branch "git branch >& /dev/null && git branch | sed -e '/^[^*]/d' -e 's/* \(.*\)/g=\1 /'"
 alias parse_hg_branch "hg branch >& /dev/null && hg branch | awk '{print $1}' | sed -e 's/\(.*\)/h=\1 /'"
+alias workon "source ~/Projects/dotfiles/extra/activate_virtualenv"
+alias deactivate "source ~/Projects/dotfiles/extra/deactivate_virtualenv"
 
 alias setprompt 'set prompt="`parse_git_branch``parse_hg_branch`w=$cwd:t% "'
 alias cwdcmd setprompt
