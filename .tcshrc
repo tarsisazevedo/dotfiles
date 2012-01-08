@@ -3,12 +3,6 @@ setenv ARCHFLAGS '-arch i386 -arch x86_64'
 setenv CLICOLOR 1
 setenv LSCOLORS ExFxCxDxAxegedabagaxax
 
-set vim=/Applications/MacVim.app/Contents/MacOS/Vim
-alias vim $vim
-setenv EDITOR vim
-setenv PAGER less
-setenv MANPAGER $PAGER
-
 setenv GOROOT $HOME/lib/go
 setenv GOPATH $HOME/lib/gopath
 setenv GOBIN $GOROOT/bin
@@ -18,6 +12,9 @@ setenv GOMAXPROCS 1
 
 set path=(/usr/local/bin /usr/local/sbin /opt/python/bin ${GOBIN} /opt/local/bin /opt/local/sbin $path)
 
+setenv EDITOR vim
+setenv PAGER less
+setenv MANPAGER $PAGER
 setenv VIRTUOSO_HOME /usr/local/virtuoso-opensource
 
 alias parse_git_branch "git branch >& /dev/null && git branch | sed -e '/^[^*]/d' -e 's/* \(.*\)/g=\1 /'"
