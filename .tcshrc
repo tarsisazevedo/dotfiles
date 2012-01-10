@@ -4,7 +4,7 @@ setenv CLICOLOR 1
 setenv LSCOLORS ExFxCxDxAxegedabagaxax
 
 setenv GOROOT $HOME/lib/go
-setenv GOPATH $HOME/lib/gopath
+setenv GOPATH $HOME/gocode
 setenv GOBIN $GOROOT/bin
 setenv GOMAXPROCS 1
 
