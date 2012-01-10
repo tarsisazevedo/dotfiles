@@ -30,4 +30,4 @@
 	lg = log -p
 	who = shortlog -s --
 [core]
-	editor = /usr/local/vim
+	editor = /usr/local/bin/vim

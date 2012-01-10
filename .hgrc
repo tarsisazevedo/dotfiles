@@ -1,6 +1,6 @@
 [ui]
 username = Francisco Souza <f@souza.cc>
-editor = /usr/local/vim
+editor = /usr/local/bin/vim
 
 [extensions]
 color =
