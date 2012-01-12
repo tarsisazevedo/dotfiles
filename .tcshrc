@@ -8,7 +8,7 @@ setenv GOPATH $HOME/gocode
 setenv GOBIN $GOROOT/bin
 setenv GOMAXPROCS 1
 
-set path=(/usr/local/bin /usr/local/sbin ${GOBIN} /opt/local/bin $path)
+set path=(/usr/local/bin /usr/local/sbin ${GOBIN} ${GOPATH}/bin /opt/local/bin $path)
 set history=500
 
 setenv EDITOR vim
