@@ -9,6 +9,7 @@ setenv GOBIN $GOROOT/bin
 setenv GOMAXPROCS 1
 
 set path=(/usr/local/bin /usr/local/sbin ${GOBIN} /opt/local/bin $path)
+set history=500
 
 setenv EDITOR vim
 setenv PAGER less
@@ -19,6 +20,7 @@ alias parse_git_branch "git branch >& /dev/null && git branch | sed -e '/^[^*]/d
 alias parse_hg_branch "hg branch >& /dev/null && hg branch | awk '{print $1}' | sed -e 's/\(.*\)/h=\1 /'"
 alias v "source $HOME/Projects/dotfiles/extra/activate_virtualenv.tcsh"
 alias d "source $HOME/Projects/dotfiles/extra/deactivate_virtualenv.tcsh"
+alias j jobs -l
 alias mkv "virtualenv ${HOME}/.virtualenvs/\!:1"
 alias rmv "rm -rf ${HOME}/.virtualenvs/\!:1 && echo 'Removed ${HOME}/.virtualenvs/\!:1'"
 alias vi vim
