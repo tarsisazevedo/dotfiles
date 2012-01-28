@@ -28,6 +28,6 @@ alias mkv "virtualenv ${HOME}/.virtualenvs/\!:1"
 alias rmv "rm -rf ${HOME}/.virtualenvs/\!:1 && echo 'Removed ${HOME}/.virtualenvs/\!:1'"
 alias vi vim
 
-alias setprompt 'set prompt="`parse_git_branch``parse_hg_branch`w=$cwd:t% "'
+alias setprompt 'set prompt="`parse_git_branch``parse_hg_branch`wd=$cwd:t% "'
 alias precmd setprompt
 setprompt
