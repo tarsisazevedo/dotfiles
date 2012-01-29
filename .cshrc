@@ -1,5 +1,3 @@
-setenv ARCHFLAGS '-arch i386 -arch x86_64'
-
 setenv CLICOLOR 1
 setenv LSCOLORS ExFxCxDxAxegedabagaxax
 
