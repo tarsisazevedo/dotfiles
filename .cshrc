@@ -1,6 +1,3 @@
-setenv CLICOLOR 1
-setenv LSCOLORS ExFxCxDxAxegedabagaxax
-
 setenv GOROOT ${HOME}/lib/go
 setenv GOPATH ${HOME}/gocode
 setenv GOBIN ${GOROOT}/bin
