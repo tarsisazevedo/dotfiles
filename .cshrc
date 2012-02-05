@@ -3,7 +3,9 @@ setenv GOPATH ${HOME}/gocode
 setenv GOBIN ${GOROOT}/bin
 setenv GOMAXPROCS 1
 
-set path=(/usr/local/bin /usr/local/sbin ${GOBIN} ${GOPATH}/bin /opt/local/bin /usr/local/etc/rc.d ${path})
+setenv ANDROID_SDK /opt/local/android-sdk-macosx
+
+set path=(/usr/local/bin /usr/local/sbin ${GOBIN} ${GOPATH}/bin /opt/local/bin ${ANDROID_SDK}/tools ${ANDROID_SDK}/platform-tools /usr/local/etc/rc.d ${path})
 set history=500
 
 setenv EDITOR vim
