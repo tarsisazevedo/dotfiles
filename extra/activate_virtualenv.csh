@@ -10,7 +10,7 @@ if -e ${virtualenvpath} then
 
     alias cdvirtualenv 'cd ${virtualenvpath}'
     alias cdsitepackages 'cd ${virtualenvpath}/lib/python*/site-packages'
-    alias setprompt 'set prompt="v=${VIRTUALENV} `parse_git_branch``parse_hg_branch`wd=$cwd:t% "'
+    alias setprompt 'set prompt="v=${VIRTUALENV} ${rvminfo}`parse_git_branch``parse_hg_branch`wd=$cwd:t% "'
     setprompt
 else
     echo "virtualenv !:$ not found"
