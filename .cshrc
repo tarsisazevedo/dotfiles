@@ -13,6 +13,7 @@ setenv PAGER less
 setenv MANPAGER ${PAGER}
 setenv VIRTUOSO_HOME /usr/local/virtuoso-opensource
 
+setenv CC "/usr/bin/clang"
 setenv CFLAGS "-I/usr/local/include/"
 setenv LDFLAGS "-L/usr/local/lib/"
 
