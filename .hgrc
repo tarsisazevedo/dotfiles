@@ -6,6 +6,7 @@ editor = /usr/local/bin/vim
 color =
 hgext.bookmarks =
 purge =
+codereview = ${GOROOT}/lib/codereview/codereview.py
 
 [color]
 status.modified = yellow bold
