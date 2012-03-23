@@ -28,7 +28,9 @@ alias vi vim
 
 set rvminfo = ""
 if ($?RUBY_VERSION) then
-    set rvminfo = "r=${RUBY_VERSION} "
+    set prompt = `rvm-prompt`
+    set prompt = `rvm-prompt | awk '{split($0,a,"@");split(a[1],b,"-");print b[2]"@"a[2]}'`
+    set rvminfo = "r=${prompt} "
 endif
 
 alias setprompt 'set prompt="${rvminfo}`parse_git_branch``parse_hg_branch`wd=$cwd:t% "'
