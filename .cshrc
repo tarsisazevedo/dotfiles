@@ -5,13 +5,12 @@ setenv GOMAXPROCS 1
 
 setenv ANDROID_SDK /opt/local/android-sdk-macosx
 
-set path=(/usr/local/bin /usr/local/sbin ${GOBIN} ${GOPATH}/bin /opt/local/bin ${ANDROID_SDK}/tools ${ANDROID_SDK}/platform-tools /usr/local/etc/rc.d ${path})
+set path=(/usr/local/bin /usr/local/sbin ${GOBIN} ${GOPATH}/bin /opt/local/bin ${ANDROID_SDK}/tools ${ANDROID_SDK}/platform-tools ${path})
 set history=500
 
 setenv EDITOR vim
 setenv PAGER less
 setenv MANPAGER ${PAGER}
-setenv VIRTUOSO_HOME /usr/local/virtuoso-opensource
 
 setenv CC "/usr/bin/clang"
 setenv CFLAGS "-I/usr/local/include/"
@@ -24,7 +23,6 @@ alias d "source ${HOME}/Projects/dotfiles/extra/deactivate_virtualenv.csh"
 alias j jobs -l
 alias mkv "virtualenv ${HOME}/.virtualenvs/\!:1"
 alias rmv "rm -rf ${HOME}/.virtualenvs/\!:1 && echo 'Removed ${HOME}/.virtualenvs/\!:1'"
-alias vi vim
 
 set rvminfo = ""
 if ($?RUBY_VERSION) then
