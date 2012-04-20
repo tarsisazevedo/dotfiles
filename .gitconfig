@@ -31,3 +31,5 @@
 	who = shortlog -s --
 [core]
 	editor = /usr/local/bin/vim
+[gitreview]
+	username = franciscosouza
