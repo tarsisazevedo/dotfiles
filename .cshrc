@@ -4,7 +4,7 @@ setenv GOMAXPROCS 1
 
 setenv ANDROID_SDK /opt/local/android-sdk-macosx
 
-set path=(/usr/local/bin /usr/local/sbin ${GOPATH}/bin /opt/local/bin ${ANDROID_SDK}/tools ${ANDROID_SDK}/platform-tools ${path})
+set path=(/usr/local/bin /usr/local/sbin ${GOROOT}/bin ${GOPATH}/bin /opt/local/bin ${ANDROID_SDK}/tools ${ANDROID_SDK}/platform-tools ${path})
 set history=50
 
 setenv EDITOR vim
