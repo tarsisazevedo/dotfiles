@@ -22,6 +22,9 @@ alias d "source ${HOME}/Projects/dotfiles/extra/deactivate_virtualenv.csh"
 alias j jobs -l
 alias mkv "virtualenv ${HOME}/.virtualenvs/\!:1"
 alias rmv "rm -rf ${HOME}/.virtualenvs/\!:1 && echo 'Removed ${HOME}/.virtualenvs/\!:1'"
+alias gouse "source ${HOME}/Projects/dotfiles/extra/changego.csh"
+alias gotrunk "gouse trunk"
+alias go1 "gouse go1"
 
 set rvminfo = ""
 if ($?RUBY_VERSION) then
