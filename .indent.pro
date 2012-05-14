@@ -1,1 +1,1 @@
--bad -bap -br -bs -l120 -lp -sob
+-bap -br -bs -l120 -lp -di7
