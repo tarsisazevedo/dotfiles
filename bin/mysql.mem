@@ -6,13 +6,9 @@ set logfile="/Volumes/mysql/xikinboook.err"
 
 if ${command} == "start" then
     hdiutil detach /Volumes/mysql
-
     diskutil erasevolume HFS+ "mysql" `hdiutil attach -nomount ram://1165430`
-
     mkdir -p /Volumes/mysql/tmp
-
     cd /usr/local && mysql_install_db --datadir=/Volumes/mysql
-
     mysqld \
         --basedir=/usr/local/Cellar/mysql/5.5.25 \
         --datadir=/Volumes/mysql \
