@@ -1,0 +1,15 @@
+#!/usr/bin/env tcsh
+
+set command="${1}"
+set pidfile="/usr/local/var/mongodb/xikinbook.pid"
+set logfile="/Volumes/mongodb/xikinboook.err"
+
+if ${command} == "start" then
+    hdiutil detach /Volumes/mongodb
+
+    diskutil erasevolume HFS+ "mongodb" `hdiutil attach -nomount ram://1165430`
+    mongod --logpath ${logfile} --pidfilepath ${pidfile} --dbpath /Volumes/mongodb --fork
+else if ${command} == "stop" then
+    kill -TERM `cat ${pidfile}`
+    hdiutil detach /Volumes/mongodb
+endif
