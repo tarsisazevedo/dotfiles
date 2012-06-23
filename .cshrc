@@ -1,3 +1,11 @@
+setenv LANG en_US.UTF-8
+setenv LC_COLLATE pt_BR.UTF-8
+setenv LC_CTYPE pt_BR.UTF-8
+setenv LC_MESSAGES pt_BR.UTF-8
+setenv LC_MONETARY pt_BR.UTF-8
+setenv LC_NUMERIC pt_BR.UTF-8
+setenv LC_TIME pt_BR.UTF-8
+
 setenv GOROOT ${HOME}/lib/go
 setenv GOPATH ${HOME}/gocode
 setenv GOMAXPROCS 1
