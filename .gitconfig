@@ -1,22 +1,10 @@
 [user]
 	name = Francisco Souza
 	email = f@souza.cc
+[core]
+	editor = vim
 [github]
 	user = fsouza
 	token = censored
-[color]
-	diff = auto
-	status = auto
-[color "diff"]
-	meta = yellow bold
-	frag = magenta bold
-	old = red bold
-	new = green bold
-[color "status"]
-	added = yellow
-	changed = blue
-	untracked = cyan
-[core]
-	editor = /usr/local/bin/vim
 [gitreview]
 	username = franciscosouza
