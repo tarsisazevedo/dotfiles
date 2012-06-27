@@ -9,7 +9,7 @@ setenv LC_TIME pt_BR.UTF-8
 setenv GOROOT ${HOME}/lib/go
 setenv GOPATH ${HOME}/gocode
 setenv GOMAXPROCS 1
-setenv PLAN9 ${HOME}/lib/plan9port
+setenv PLAN9 ${HOME}/lib/plan9
 
 setenv ANDROID_SDK /opt/local/android-sdk-macosx
 
@@ -28,12 +28,8 @@ alias parse_git_branch "git branch >& /dev/null && git branch | sed -e '/^[^*]/d
 alias parse_hg_branch "hg branch >& /dev/null && hg branch | awk '{print $1}' | sed -e 's/\(.*\)/h=\1 /'"
 alias v "source ${HOME}/Projects/dotfiles/extra/activate_virtualenv.csh"
 alias d "source ${HOME}/Projects/dotfiles/extra/deactivate_virtualenv.csh"
-alias j jobs -l
 alias mkv "virtualenv ${HOME}/.virtualenvs/\!:1"
 alias rmv "rm -rf ${HOME}/.virtualenvs/\!:1 && echo 'Removed ${HOME}/.virtualenvs/\!:1'"
-alias gouse "source ${HOME}/Projects/dotfiles/extra/changego.csh"
-alias gotrunk "gouse trunk"
-alias go1 "gouse go1"
 
 set rvminfo = ""
 if ($?RUBY_VERSION) then
