@@ -23,13 +23,14 @@ setenv MANPAGER ${PAGER}
 setenv CC "/usr/bin/clang"
 setenv CFLAGS "-I/usr/local/include/"
 setenv LDFLAGS "-L/usr/local/lib/"
+setenv VIRTUALENVS ${HOME}/.venvs
 
 alias parse_git_branch "git branch >& /dev/null && git branch | sed -e '/^[^*]/d' -e 's/* \(.*\)/g=\1 /'"
 alias parse_hg_branch "hg branch >& /dev/null && hg branch | awk '{print $1}' | sed -e 's/\(.*\)/h=\1 /'"
 alias v "source ${HOME}/Projects/dotfiles/extra/activate_virtualenv.csh"
 alias d "source ${HOME}/Projects/dotfiles/extra/deactivate_virtualenv.csh"
-alias mkv "virtualenv ${HOME}/.virtualenvs/\!:1"
-alias rmv "rm -rf ${HOME}/.virtualenvs/\!:1 && echo 'Removed ${HOME}/.virtualenvs/\!:1'"
+alias mkv "test -d ${VIRTUALENVS} || mkdir -p ${VIRTUALENVS} ; virtualenv ${VIRTUALENVS}/\!:1"
+alias rmv "rm -rf ${VIRTUALENVS}/\!:1 && echo 'Removed ${VIRTUALENVS}/\!:1'"
 
 set rvminfo = ""
 if ($?RUBY_VERSION) then

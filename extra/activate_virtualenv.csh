@@ -1,7 +1,7 @@
-set virtualenvpath=${HOME}/.virtualenvs/!:$
+set virtualenvpath=${VIRTUALENVS}/!:$
 
 if !:$ == 'v' then
-    ls ${HOME}/.virtualenvs
+    ls ${VIRTUALENVS}
 else if -e ${virtualenvpath} then
     if ! ( $?oldpath ) then
         setenv oldpath "$path"
