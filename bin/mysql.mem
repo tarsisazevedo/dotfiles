@@ -1,16 +1,16 @@
-#!/usr/bin/env tcsh
+#!/bin/csh -ef
 
 set command="${1}"
 set pidfile="/usr/local/var/mysql/xikinbook.pid"
 set logfile="/Volumes/mysql/xikinboook.err"
+set mysqlversion=`mysql --version | awk '{sub(",", "", $5);print $5}'`
 
 if ${command} == "start" then
-    hdiutil detach /Volumes/mysql
     diskutil erasevolume HFS+ "mysql" `hdiutil attach -nomount ram://1165430`
     mkdir -p /Volumes/mysql/tmp
     cd /usr/local && mysql_install_db --datadir=/Volumes/mysql
     mysqld \
-        --basedir=/usr/local/Cellar/mysql/5.5.25 \
+        --basedir=/usr/local/Cellar/mysql/${mysqlversion} \
         --datadir=/Volumes/mysql \
         --log-error=${logfile} \
         --table_cache=1024 \
@@ -19,6 +19,8 @@ if ${command} == "start" then
         --tmpdir=/Volumes/mysql/tmp \
         --pid-file=${pidfile} &
 else if ${command} == "stop" then
-    kill -TERM `cat ${pidfile}`
+    if -f ${pidfile} then
+        kill -TERM `cat ${pidfile}`
+    endif
     hdiutil detach /Volumes/mysql
 endif
