@@ -10,10 +10,11 @@ setenv GOROOT ${HOME}/lib/go
 setenv GOPATH ${HOME}/gocode
 setenv GOMAXPROCS 1
 setenv PLAN9 ${HOME}/lib/plan9
+setenv RBENV $HOME/.rbenv
 
 setenv ANDROID_SDK /opt/local/android-sdk-macosx
 
-set path=(/usr/local/bin /usr/local/sbin ${GOROOT}/bin ${GOPATH}/bin /opt/local/bin ${ANDROID_SDK}/tools ${ANDROID_SDK}/platform-tools ${path} ${PLAN9}/bin ${HOME}/Projects/dotfiles/bin)
+set path=($RBENV/shims /usr/local/bin /usr/local/sbin ${GOROOT}/bin ${GOPATH}/bin /opt/local/bin ${ANDROID_SDK}/tools ${ANDROID_SDK}/platform-tools ${path} ${PLAN9}/bin ${HOME}/Projects/dotfiles/bin)
 set history=50
 
 setenv EDITOR vim
@@ -31,14 +32,9 @@ alias v "source ${HOME}/Projects/dotfiles/extra/activate_virtualenv.csh"
 alias d "source ${HOME}/Projects/dotfiles/extra/deactivate_virtualenv.csh"
 alias mkv "test -d ${VIRTUALENVS} || mkdir -p ${VIRTUALENVS} ; virtualenv ${VIRTUALENVS}/\!:1"
 alias rmv "rm -rf ${VIRTUALENVS}/\!:1 && echo 'Removed ${VIRTUALENVS}/\!:1'"
+alias rbenv_version "cat $RBENV/version >& /dev/null && cat $RBENV/version | sed -e 's/^.*\(1.[0-9].[0-9]\).*/r=\1 /'"
+alias dr "rm $RBENV/version"
 
-set rvminfo = ""
-if ($?RUBY_VERSION) then
-    set prompt = `rvm-prompt`
-    set prompt = `rvm-prompt | awk '{split($0,a,"@");split(a[1],b,"-");print b[2]"@"a[2]}'`
-    set rvminfo = "r=${prompt} "
-endif
-
-alias setprompt 'set prompt="${rvminfo}`parse_git_branch``parse_hg_branch`wd=$cwd:t% "'
+alias setprompt 'set prompt="`rbenv_version``parse_git_branch``parse_hg_branch`wd=$cwd:t% "'
 alias precmd setprompt
 setprompt
