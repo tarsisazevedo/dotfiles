@@ -21,7 +21,8 @@ setenv EDITOR vim
 setenv PAGER less
 setenv MANPAGER ${PAGER}
 
-setenv CC "/usr/bin/clang"
+setenv CC /usr/bin/clang
+setenv CXX /usr/bin/clang++
 setenv CFLAGS "-I/usr/local/include/"
 setenv LDFLAGS "-L/usr/local/lib/"
 setenv VIRTUALENVS ${HOME}/.venvs
