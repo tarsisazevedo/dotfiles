@@ -9,14 +9,13 @@ setenv LC_TIME pt_BR.UTF-8
 setenv GOROOT ${HOME}/lib/go
 setenv GOPATH ${HOME}/gocode
 setenv GOMAXPROCS 1
-setenv PLAN9 ${HOME}/lib/plan9
 setenv RBENV $HOME/.rbenv
 
 setenv NODE_PATH /usr/local/lib/node_modules
 
 setenv ANDROID_SDK /opt/local/android-sdk-macosx
 
-set path=($RBENV/shims /usr/local/bin /usr/local/sbin ${GOROOT}/bin ${GOPATH}/bin /opt/local/bin ${ANDROID_SDK}/tools ${ANDROID_SDK}/platform-tools ${path} ${PLAN9}/bin ${HOME}/Projects/dotfiles/bin)
+set path=($RBENV/shims /usr/local/bin /usr/local/sbin ${GOROOT}/bin ${GOPATH}/bin /opt/local/bin ${ANDROID_SDK}/tools ${ANDROID_SDK}/platform-tools ${path} ${HOME}/Projects/dotfiles/bin)
 set history=50
 
 setenv EDITOR vim
