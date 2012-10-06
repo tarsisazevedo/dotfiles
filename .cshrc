@@ -36,8 +36,6 @@ if $?SSH_CLIENT then
     set machine="ssh=%m "
 endif
 
-alias parse_git_branch "git branch >& /dev/null && git branch | sed -e '/^[^*]/d' -e 's/* \(.*\)/g=\1 /'"
-alias parse_hg_branch "hg branch >& /dev/null && hg branch | awk '{print $1}' | sed -e 's/\(.*\)/h=\1 /'"
 alias v "source ${HOME}/Projects/dotfiles/extra/activate_virtualenv.csh"
 alias d "source ${HOME}/Projects/dotfiles/extra/deactivate_virtualenv.csh"
 alias mkv "test -d ${VIRTUALENVS} || mkdir -p ${VIRTUALENVS} ; virtualenv ${VIRTUALENVS}/\!:1"
@@ -45,6 +43,6 @@ alias rmv "rm -rf ${VIRTUALENVS}/\!:1 && echo 'Removed ${VIRTUALENVS}/\!:1'"
 alias rbenv_version "cat $RBENV/version >& /dev/null && cat $RBENV/version | sed -e 's/^.*\(1.[0-9].[0-9]\).*/r=\1 /'"
 alias dr "rm $RBENV/version"
 
-alias setprompt 'set prompt="${machine}`rbenv_version``parse_git_branch``parse_hg_branch`wd=$cwd:t% "'
+alias setprompt 'set prompt="${machine}wd=$cwd:t% "'
 alias precmd setprompt
 setprompt
