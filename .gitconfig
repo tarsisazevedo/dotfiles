@@ -3,6 +3,7 @@
 	email = f@souza.cc
 [core]
 	editor = vim
+	excludesfile = ~/.gitignore_global
 [github]
 	user = fsouza
 	token = censored
