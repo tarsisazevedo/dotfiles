@@ -33,7 +33,7 @@ setenv VIRTUALENVS ${HOME}/.venvs
 set machine=""
 
 if $?SSH_CLIENT then
-    set machine="ssh=%m "
+    set machine="ssh=%m/"
 endif
 
 alias v "source ${HOME}/Projects/dotfiles/extra/activate_virtualenv.csh"
@@ -43,6 +43,6 @@ alias rmv "rm -rf ${VIRTUALENVS}/\!:1 && echo 'Removed ${VIRTUALENVS}/\!:1'"
 alias rbenv_version "cat $RBENV/version >& /dev/null && cat $RBENV/version | sed -e 's/^.*\(1.[0-9].[0-9]\).*/r=\1 /'"
 alias dr "rm $RBENV/version"
 
-alias setprompt 'set prompt="${machine}wd=$cwd:t% "'
+alias setprompt 'set prompt="${machine}$cwd:t% "'
 alias precmd setprompt
 setprompt

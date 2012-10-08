@@ -4,7 +4,7 @@ if ($?oldpath) then
 
     unalias cdvirtualenv
     unalias cdsitepackages
-    alias setprompt 'set prompt="${machine}`rbenv_version`wd=$cwd:t% "'
+    alias setprompt 'set prompt="${machine}$cwd:t% "'
     setprompt
 else
     echo "virtualenv not active"

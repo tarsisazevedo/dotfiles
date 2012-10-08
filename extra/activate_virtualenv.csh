@@ -12,7 +12,7 @@ else if -e ${virtualenvpath} then
 
     alias cdvirtualenv 'cd ${virtualenvpath}'
     alias cdsitepackages 'cd ${virtualenvpath}/lib/python*/site-packages'
-    alias setprompt 'set prompt="${machine}v=${VIRTUALENV} `rbenv_version`wd=$cwd:t% "'
+    alias setprompt 'set prompt="v=${VIRTUALENV} ${machine}$cwd:t% "'
     setprompt
 else
     echo "virtualenv !:$ not found"
