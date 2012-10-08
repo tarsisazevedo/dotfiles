@@ -33,7 +33,7 @@ setenv VIRTUALENVS ${HOME}/.venvs
 set machine=""
 
 if $?SSH_CLIENT then
-    set machine="ssh=%m/"
+	set machine="ssh=%m/"
 endif
 
 alias v "source ${HOME}/Projects/dotfiles/extra/activate_virtualenv.csh"

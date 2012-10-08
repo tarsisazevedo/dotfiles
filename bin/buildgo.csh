@@ -1,8 +1,8 @@
 #!/bin/csh -exf
 
 if $#argv != 2 then
-    echo "usage: buildgo.csh GOOS GOARCH"
-    exit 2
+	echo "usage: buildgo.csh GOOS GOARCH"
+	exit 2
 endif
 
 pushd ${GOROOT}/src
@@ -11,9 +11,9 @@ pushd ${GOROOT}/src
 popd
 
 foreach arch (8 6)
-    foreach cmd (a c g l)
-        go tool dist install -v cmd/$arch$cmd
-    end
+	foreach cmd (a c g l)
+		go tool dist install -v cmd/$arch$cmd
+	end
 end
 setenv CGO_ENABLED 0
 setenv GOOS $1
