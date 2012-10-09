@@ -25,7 +25,7 @@ setenv MANPAGER ${PAGER}
 
 setenv CC /usr/bin/clang
 setenv CXX /usr/bin/clang++
-setenv CFLAGS "-I/usr/local/include/ -Wall -Wextra -Werror -pedantic"
+setenv CFLAGS "-I/usr/local/include/ -Wall -Wextra -pedantic"
 setenv CXXFLAGS "${CFLAGS}"
 setenv LDFLAGS "-L/usr/local/lib/"
 setenv VIRTUALENVS ${HOME}/.venvs
