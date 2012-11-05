@@ -1,6 +1,7 @@
 [ui]
 username = Francisco Souza <f@souza.cc>
 editor = /usr/local/bin/vim
+ignore = ~/.hgignore_global
 
 [extensions]
 color =
