@@ -19,6 +19,8 @@ setenv ANDROID_SDK /opt/local/android-sdk-macosx
 set path=($RBENV/shims /usr/local/bin /usr/local/sbin ${GOROOT}/bin ${GOPATH}/bin /opt/local/bin ${ANDROID_SDK}/tools ${ANDROID_SDK}/platform-tools ${path} ${HOME}/Projects/dotfiles/bin ${PLAN9}/bin)
 set history=50
 
+setenv JAVA_HOME `/usr/libexec/java_home`
+
 setenv EDITOR vim
 setenv PAGER less
 setenv MANPAGER ${PAGER}
