@@ -1,4 +1,4 @@
-#!/bin/csh -exf
+#!/bin/csh -ef
 
 if $#argv != 2 then
 	echo "usage: buildgo.csh GOOS GOARCH"
