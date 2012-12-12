@@ -6,8 +6,7 @@ if $#argv != 2 then
 endif
 
 pushd ${GOROOT}/src
-./clean.bash
-./make.bash
+./make.bash --no-clean
 popd
 
 foreach arch (8 6)
