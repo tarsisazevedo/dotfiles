@@ -1,7 +1,7 @@
 #!/bin/csh -ef
 
-if $#argv != 2 then
-	echo "usage: buildgo.csh GOOS GOARCH"
+if ($#argv < 1) then
+	echo "usage: buildgo.csh GOOS_GOARCH1 GOOS_GOARCH2 ... GOOS_GOARCHN"
 	exit 2
 endif
 
@@ -14,9 +14,14 @@ foreach arch (8 6)
 		go tool dist install -v cmd/$arch$cmd
 	end
 end
+
 setenv CGO_ENABLED 0
-setenv GOOS $1
-setenv GOARCH $2
-go tool dist install -v pkg/runtime
-go install -v -a std
+
+foreach arg ($argv[*])
+	setenv GOOS `echo $arg | cut -d'_' -f1`
+	setenv GOARCH `echo $arg | cut -d'_' -f2`
+	go tool dist install -v pkg/runtime
+	go install -v -a std
+end
+
 exit 0
