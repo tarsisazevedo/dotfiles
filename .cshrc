@@ -48,3 +48,5 @@ alias dr "rm $RBENV/version"
 alias setprompt 'set prompt="${machine}$cwd:t% "'
 alias precmd setprompt
 setprompt
+
+source /opt/intel/bin/compilervars.csh intel64
