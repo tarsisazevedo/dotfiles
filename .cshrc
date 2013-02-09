@@ -10,13 +10,12 @@ setenv GOROOT ${HOME}/lib/go
 setenv GOPATH ${HOME}/gocode
 setenv GOMAXPROCS 1
 setenv RBENV $HOME/.rbenv
-setenv PLAN9 $HOME/lib/plan9port
 
 setenv NODE_PATH /usr/local/lib/node_modules
 
 setenv ANDROID_SDK /opt/local/android-sdk-macosx
 
-set path=($RBENV/shims $HOME/bin /usr/local/bin /usr/local/sbin ${GOROOT}/bin ${GOPATH}/bin /opt/local/bin ${ANDROID_SDK}/tools ${ANDROID_SDK}/platform-tools ${path} ${HOME}/Projects/dotfiles/bin ${PLAN9}/bin)
+set path=($RBENV/shims $HOME/bin /usr/local/bin /usr/local/sbin ${GOROOT}/bin ${GOPATH}/bin /opt/local/bin ${ANDROID_SDK}/tools ${ANDROID_SDK}/platform-tools ${path} ${HOME}/Projects/dotfiles/bin)
 set history=50
 
 setenv JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.7.0_07.jdk/Contents/Home
