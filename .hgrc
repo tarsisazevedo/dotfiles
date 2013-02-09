@@ -4,7 +4,5 @@ editor = /usr/local/bin/vim
 ignore = ~/.hgignore_global
 
 [extensions]
-color =
-hgext.bookmarks =
 purge =
 codereview = ${GOROOT}/lib/codereview/codereview.py
