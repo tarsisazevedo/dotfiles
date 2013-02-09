@@ -29,10 +29,10 @@ setenv CXXFLAGS "${CFLAGS}"
 setenv LDFLAGS "-L/usr/local/lib/"
 setenv VIRTUALENVS ${HOME}/.venvs
 
-set machine=""
-
 if $?SSH_CLIENT then
 	set machine="ssh=%m/"
+else
+	set machine=""
 endif
 
 alias v "source ${HOME}/Projects/dotfiles/extra/activate_virtualenv.csh"
