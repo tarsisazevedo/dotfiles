@@ -23,8 +23,8 @@ setenv EDITOR vim
 setenv PAGER less
 setenv MANPAGER $PAGER
 
-setenv CC /usr/bin/clang
-setenv CXX /usr/bin/clang++
+setenv CC /opt/bin/clang
+setenv CXX /opt/bin/clang++
 setenv CFLAGS "-I/usr/local/include/ -Wall -Wextra -Wno-comments -pedantic"
 setenv CXXFLAGS "${CFLAGS}"
 setenv LDFLAGS "-L/usr/local/lib/"
