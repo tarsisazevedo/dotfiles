@@ -17,7 +17,6 @@ set path=($RBENV/shims $HOME/bin /opt/bin /usr/local/bin /usr/local/sbin ${GOROO
 set history=50
 
 setenv JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.7.0_07.jdk/Contents/Home
-setenv CLASSPATH $HOME/lib/jars
 
 setenv EDITOR vim
 setenv PAGER less
