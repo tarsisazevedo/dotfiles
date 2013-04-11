@@ -41,6 +41,8 @@ alias mkv "test -d ${VIRTUALENVS} || mkdir -p ${VIRTUALENVS} ; virtualenv ${VIRT
 alias rmv "rm -rf ${VIRTUALENVS}/\!:1 && echo 'Removed ${VIRTUALENVS}/\!:1'"
 alias rbenv_version "cat $RBENV/version >& /dev/null && cat $RBENV/version | sed -e 's/^.*\(1.[0-9].[0-9]\).*/r=\1 /'"
 alias dr "rm $RBENV/version"
+alias disable-push "cp ${HOME}/Projects/dotfiles/extra/pre-push .git/hooks/pre-push"
+alias enable-push "rm .git/hooks/pre-push"
 
 alias setprompt 'set prompt="${machine}$cwd:t% "'
 alias precmd setprompt
