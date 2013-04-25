@@ -8,7 +8,6 @@ setenv LC_TIME pt_BR.UTF-8
 
 setenv GOROOT ${HOME}/lib/go
 setenv GOPATH ${HOME}/gocode
-setenv GOMAXPROCS 1
 setenv RBENV $HOME/.rbenv
 
 setenv NODE_PATH /usr/local/lib/node_modules
