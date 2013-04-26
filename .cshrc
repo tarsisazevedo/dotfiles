@@ -25,7 +25,7 @@ setenv CXX /opt/bin/clang++
 setenv CFLAGS "-I/opt/include/libcxx -I/usr/local/include/ -Wall -Wextra -Wno-comments -pedantic"
 setenv CXXFLAGS "${CFLAGS}"
 setenv LDFLAGS "-L/usr/local/lib/ -L/opt/lib"
-setenv DYLD_LIBRARY_PATH /opt/lib/libcxx
+setenv DYLD_LIBRARY_PATH /opt/lib/libcxx:/opt/lib
 setenv VIRTUALENVS ${HOME}/.venvs
 
 if $?SSH_CLIENT then
