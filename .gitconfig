@@ -1,9 +1,21 @@
 [user]
-	name = Francisco Souza
-	email = f@souza.cc
+	name = Tarsis Azevedo
+	email = tarsis.azevedo@gmail.com
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore_global
 [github]
-	user = fsouza
+	user = tarsis
 	token = censored
+[color]
+	ui = true
+[alias]
+    st=status
+    ci=commit
+    co=checkout
+    sub=submodule
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[push]
+	default = simple
+[help]
+	autocorrect = 5
