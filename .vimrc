@@ -3,7 +3,6 @@ set nocompatible
 
 " required for vundle
 filetype off
-
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -33,8 +32,8 @@ Bundle 'mattn/zencoding-vim'
 Bundle 'motemen/git-vim'
 " Tab list panel
 Bundle 'kien/tabman.vim'
-" Powerline
-Bundle 'Lokaltog/powerline'
+" airline
+Bundle 'vim-airline'
 " Terminal Vim with 256 colors colorscheme
 Bundle 'fisadev/fisa-vim-colorscheme'
 " Consoles as buffers
