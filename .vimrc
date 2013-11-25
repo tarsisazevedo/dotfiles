@@ -63,6 +63,8 @@ Bundle 'railscasts'
 
 Bundle 'fsouza/go.vim'
 
+Bundle 'scrooloose/syntastic'
+
 " allow plugins by file type
 filetype plugin indent on
 
@@ -196,13 +198,15 @@ nmap ,r :RecurGrepFast
 nmap ,wR :RecurGrep <cword><CR>
 nmap ,wr :RecurGrepFast <cword><CR>
 
-" run pep8+pyflakes validator
-autocmd BufWriteCmd *.py call Flake8()
-" rules to ignore (example: "E501,W293")
-let g:flake8_ignore="E501,W391"
-
-" don't let pyflakes allways override the quickfix list
-let g:pyflakes_use_quickfix = 0
+" syntastic
+let g:syntastic_check_on_open=1
+let g:syntastic_auto_jump=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_python_checkers=['flake8']
+let g:syntastic_python_flake8_args='--ignore=E501,W292'
+let g:syntastic_mode_map={ 'mode': 'active',
+                     \ 'active_filetypes': [],
+                     \ 'passive_filetypes': ['html'] }
 
 " autoclose (
 inoremap        (  ()<Left>
