@@ -53,3 +53,5 @@ export LSCOLORS=gxfxcxdxbxegedabagacad
 source ~/projetos/pessoal/dotfiles/.bash_aliases
 source /usr/local/etc/bash_completion.d/fab
 PATH="/usr/local/heroku/bin:$PATH"
+
+export HISTCONTROL=ignoredups
