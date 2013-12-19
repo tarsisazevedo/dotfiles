@@ -95,14 +95,15 @@ map <F4> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 
 " NERDTree (better file browser) toggle
-map <F3> :NERDTreeToggle<CR>
+nnoremap <D-e> :NERDTreeToggle<CR>
 let NERDTreeShowBookmarks=1
+let NERDTreeIgnore = ['\.pyc$']
 
 " tab navigation
 map tn :tabn<CR>
 map tp :tabp<CR>
 map tm :tabm<CR>
-map tt :tabnew 
+map tt :tabnew
 map <C-S-Right> :tabn<CR>
 imap <C-S-Right> <ESC>:tabn<CR>
 map <C-S-Left> :tabp<CR>
@@ -155,14 +156,14 @@ let OmniCpp_ShowPrototypeInAbbr = 1
 " 0 = hide access
 " 1 = show access
 let OmniCpp_ShowAccess = 1
-" This option can be use if you don't want to parse using namespace declarations in included files and want to add 
+" This option can be use if you don't want to parse using namespace declarations in included files and want to add
 " namespaces that are always used in your project.
 let OmniCpp_DefaultNamespaces = ["std"]
 " Complete Behaviour
 let OmniCpp_MayCompleteDot = 0
 let OmniCpp_MayCompleteArrow = 0
 let OmniCpp_MayCompleteScope = 0
-" When 'completeopt' does not contain "longest", Vim automatically select the first entry of the popup menu. You can 
+" When 'completeopt' does not contain "longest", Vim automatically select the first entry of the popup menu. You can
 " change this behaviour with the OmniCpp_SelectFirstItem option.
 let OmniCpp_SelectFirstItem = 0
 
@@ -186,9 +187,10 @@ nmap ,we :call CtrlPWithSearchText(expand('<cword>'), '')<CR>
 nmap ,pe :call CtrlPWithSearchText(expand('<cfile>'), '')<CR>
 
 " Don't change working directory
-let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = 'find %s -type f ! -regex ".*.git/.*" | grep -v "\(pyc\|swp\)$"'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_max_files = 0
 
 " simple recursive grep
 command! -nargs=1 RecurGrep lvimgrep /<args>/gj ./**/*.* | lopen | set nowrap
@@ -244,29 +246,22 @@ set scrolloff=3
 
 " autocompletition of files and commands behaves like shell
 " (complete only the common part, list the options that match)
-set wildmode=list:longest
-
-" to use fancy symbols for powerline, uncomment the following line and use a
-" patched font (more info on the README.rst)
-let g:Powerline_symbols = 'fancy'
-
-"Bad whitespaces
-autocmd BufEnter * highlight BadWhitespace ctermbg=red guibg=red
-autocmd BufEnter * match BadWhitespace /\s\+$/
-
 set wildmenu
 set wildmode=list:longest
 
-function TrimWhiteSpace()
-	let v = winsaveview()
-	silent %s/\s\+$//
-	call winrestview(v)
+"Bad whitespaces
+match ErrorMsg '\s\+$'
+
+" Removes trailing spaces
+function! TrimWhiteSpace()
+    %s/\s\+$//e
 endfunction
 
-map 8 :call TrimWhiteSpace()<CR>
+nnoremap <silent> <Leader>[ :call TrimWhiteSpace()<CR>
 
 " Use Node.js for JavaScript interpretation
 let $JS_CMD='node'
 
-autocmd BufRead,BufNewFile *.md set filetype=Markdown
+autocmd BufRead,BufNewFile *.md set filetype=markdown
 syntax on
+
