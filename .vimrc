@@ -65,6 +65,8 @@ Bundle 'fsouza/go.vim'
 
 Bundle 'scrooloose/syntastic'
 
+Bundle 'dgryski/vim-godef'
+
 " allow plugins by file type
 filetype plugin indent on
 
@@ -100,24 +102,9 @@ let NERDTreeShowBookmarks=1
 let NERDTreeIgnore = ['\.pyc$']
 
 " tab navigation
-map tn :tabn<CR>
-map tp :tabp<CR>
-map tm :tabm<CR>
-map tt :tabnew
-map <C-S-Right> :tabn<CR>
-imap <C-S-Right> <ESC>:tabn<CR>
-map <C-S-Left> :tabp<CR>
-imap <C-S-Left> <ESC>:tabp<CR>
-
-" navigate windows with meta+arrows
-map <M-Right> <c-w>l
-map <M-Left> <c-w>h
-map <M-Up> <c-w>k
-map <M-Down> <c-w>j
-imap <M-Right> <ESC><c-w>l
-imap <M-Left> <ESC><c-w>h
-imap <M-Up> <ESC><c-w>k
-imap <M-Down> <ESC><c-w>j
+map ,a :tabn<CR>
+map ,s :tabp<CR>
+map tt :tabnew 
 
 " automatically close autocompletition window
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
@@ -208,7 +195,7 @@ let g:syntastic_python_checkers=['flake8']
 let g:syntastic_python_flake8_args='--ignore=E501,W292'
 let g:syntastic_mode_map={ 'mode': 'active',
                      \ 'active_filetypes': [],
-                     \ 'passive_filetypes': ['html'] }
+                     \ 'passive_filetypes': ['html', 'scss', 'go'] }
 
 " autoclose (
 inoremap        (  ()<Left>
@@ -237,7 +224,7 @@ endif
 " colors for gvim
 if has('gui_running')
     colorscheme sexy-railscasts
-    set guifont=Source\ Code\ Pro:h14
+    set guifont=Source\ Code\ Pro:h15
 endif
 
 " when scrolling, keep cursor 3 lines away from screen border
@@ -265,3 +252,6 @@ let $JS_CMD='node'
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 syntax on
 
+" go to definition
+let g:godef_split=3 "open definition in vsplit window
+autocmd BufWritePre *.go Fmt
