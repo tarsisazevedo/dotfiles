@@ -52,6 +52,13 @@ export LSCOLORS=gxfxcxdxbxegedabagacad
 
 source ~/projetos/pessoal/dotfiles/.bash_aliases
 source /usr/local/etc/bash_completion.d/fab
-PATH="/usr/local/heroku/bin:$PATH"
+
+export CFLAGS=-Qunused-arguments
+export CPPFLAGS=-Qunused-arguments
 
 export HISTCONTROL=ignoredups
+
+source /usr/local/bin/activate.sh
+export GOPATH=/Users/tarsis
+
+PATH="/usr/local/heroku/bin:$GOPATH/bin:$PATH"
