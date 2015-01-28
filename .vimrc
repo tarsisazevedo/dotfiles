@@ -13,7 +13,7 @@ Plugin 'gmarik/Vundle.vim'
 " Bundles from GitHub repos:
 
 " Python and PHP Debugger
-Plugin 'fisadev/vim-debug.vim'
+Plugin 'jaredly/vim-debug.vim'
 " Better file browser
 Plugin 'scrooloose/nerdtree'
 " Code commenter
@@ -26,8 +26,6 @@ Plugin 'majutsushi/tagbar'
 Plugin 'kien/ctrlp.vim'
 " PEP8 and python-flakes checker
 Plugin 'nvie/vim-flake8'
-" Zen coding
-Plugin 'mattn/zencoding-vim'
 " Git integration
 Plugin 'motemen/git-vim'
 " Tab list panel
@@ -38,11 +36,8 @@ Plugin 'vim-airline'
 Plugin 'fisadev/fisa-vim-colorscheme'
 " Consoles as buffers
 Plugin 'rosenfeld/conque-term'
-" Pending tasks list
-Plugin 'fisadev/FixedTaskList.vim'
 
 Plugin 'akitaonrails/snipmate.vim'
-
 Plugin 'viniciuschagas/snipmate-snippets'
 
 " Bundles from vim-scripts repos
@@ -51,19 +46,13 @@ Plugin 'viniciuschagas/snipmate-snippets'
 Plugin 'AutoComplPop'
 " Python code checker
 Plugin 'pyflakes.vim'
-" Search results counter
-Plugin 'IndexedSearch'
 " XML/HTML tags navigation
 Plugin 'matchit.zip'
-" Gvim colorscheme
-Plugin 'Wombat'
 
 Plugin 'oguzbilgic/sexy-railscasts-theme'
 Plugin 'railscasts'
 
 Plugin 'fsouza/go.vim'
-
-Plugin 'scrooloose/syntastic'
 
 Plugin 'dgryski/vim-godef'
 
@@ -187,16 +176,6 @@ nmap ,R :RecurGrep
 nmap ,r :RecurGrepFast
 nmap ,wR :RecurGrep <cword><CR>
 nmap ,wr :RecurGrepFast <cword><CR>
-
-" syntastic
-let g:syntastic_check_on_open=1
-let g:syntastic_auto_jump=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_python_checkers=['flake8']
-let g:syntastic_python_flake8_args='--ignore=E501,W292'
-let g:syntastic_mode_map={ 'mode': 'active',
-                     \ 'active_filetypes': [],
-                     \ 'passive_filetypes': ['html', 'scss', 'go'] }
 
 " autoclose (
 inoremap        (  ()<Left>
