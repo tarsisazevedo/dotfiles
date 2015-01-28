@@ -3,72 +3,73 @@ set nocompatible
 
 " required for vundle
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " Bundles from GitHub repos:
 
 " Python and PHP Debugger
-Bundle 'fisadev/vim-debug.vim'
+Plugin 'fisadev/vim-debug.vim'
 " Better file browser
-Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 " Code commenter
-Bundle 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdcommenter'
 " Search and read python documentation
-Bundle 'fs111/pydoc.vim'
+Plugin 'fs111/pydoc.vim'
 " Class/module browser
-Bundle 'majutsushi/tagbar'
+Plugin 'majutsushi/tagbar'
 " Code and files fuzzy finder
-Bundle 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 " PEP8 and python-flakes checker
-Bundle 'nvie/vim-flake8'
+Plugin 'nvie/vim-flake8'
 " Zen coding
-Bundle 'mattn/zencoding-vim'
+Plugin 'mattn/zencoding-vim'
 " Git integration
-Bundle 'motemen/git-vim'
+Plugin 'motemen/git-vim'
 " Tab list panel
-Bundle 'kien/tabman.vim'
+Plugin 'kien/tabman.vim'
 " airline
-Bundle 'vim-airline'
+Plugin 'vim-airline'
 " Terminal Vim with 256 colors colorscheme
-Bundle 'fisadev/fisa-vim-colorscheme'
+Plugin 'fisadev/fisa-vim-colorscheme'
 " Consoles as buffers
-Bundle 'rosenfeld/conque-term'
+Plugin 'rosenfeld/conque-term'
 " Pending tasks list
-Bundle 'fisadev/FixedTaskList.vim'
+Plugin 'fisadev/FixedTaskList.vim'
 
-Bundle 'akitaonrails/snipmate.vim'
+Plugin 'akitaonrails/snipmate.vim'
 
-Bundle 'viniciuschagas/snipmate-snippets'
+Plugin 'viniciuschagas/snipmate-snippets'
 
 " Bundles from vim-scripts repos
 
 " Autocompletition
-Bundle 'AutoComplPop'
+Plugin 'AutoComplPop'
 " Python code checker
-Bundle 'pyflakes.vim'
+Plugin 'pyflakes.vim'
 " Search results counter
-Bundle 'IndexedSearch'
+Plugin 'IndexedSearch'
 " XML/HTML tags navigation
-Bundle 'matchit.zip'
+Plugin 'matchit.zip'
 " Gvim colorscheme
-Bundle 'Wombat'
+Plugin 'Wombat'
 
-Bundle 'sexy-railscasts'
-Bundle 'railscasts'
+Plugin 'oguzbilgic/sexy-railscasts-theme'
+Plugin 'railscasts'
 
-Bundle 'fsouza/go.vim'
+Plugin 'fsouza/go.vim'
 
-Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 
-Bundle 'dgryski/vim-godef'
+Plugin 'dgryski/vim-godef'
 
-" allow plugins by file type
-filetype plugin indent on
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 " tabs and spaces handling
 set expandtab
@@ -224,7 +225,7 @@ endif
 " colors for gvim
 if has('gui_running')
     colorscheme sexy-railscasts
-    set guifont=Source\ Code\ Pro:h15
+    set guifont=Source\ Code\ Pro:h14
 endif
 
 " when scrolling, keep cursor 3 lines away from screen border
