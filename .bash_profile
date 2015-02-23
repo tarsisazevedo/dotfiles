@@ -62,3 +62,6 @@ source /usr/local/bin/activate.sh
 export GOPATH=/Users/tarsis
 
 PATH="/usr/local/heroku/bin:$GOPATH/bin:$PATH"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
