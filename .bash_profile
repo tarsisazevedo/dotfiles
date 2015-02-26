@@ -27,11 +27,11 @@ export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;37'
 alias grep='grep --color=auto' # Always highlight grep search term
 
-parse_git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/' | sed 's/$/ /'
+function PWD {
+    pwd | awk -F\/ '{if (NF>4) print "...", $(NF-2), $(NF-1), $(NF); else if (NF>3) print $(NF-2),$(NF-1),$(NF); else if (NF>2) print $(NF-1),$(NF); else if (NF>1) print $(NF);}' | sed -e 's# #\/#g'
 }
 
-function prompt {
+function set_ps1() {
 	local BLACK="\[\033[0;30m\]"
 	local RED="\[\033[0;31m\]"
 	local GREEN="\[\033[0;32m\]"
@@ -41,9 +41,27 @@ function prompt {
 	local CYAN="\[\033[0;36m\]"
 	local WHITE="\[\033[0;37m\]"
 	local WHITEBOLD="\[\033[1;37m\]"
-export PS1="${RED}\${CYAN}\u${RED} ${YELLOW}\w ${GREEN}\$(parse_git_branch)${WHITE}$ \[\e[m\]\[\e[m\]"
+    local LIGHTBLUE="\[\033[1;34m\]"
+    local LIGHTYELLOW="\[\033[1;33m\]"
+    local LIGHTCYAN="\[\033[1;36m\]"
+    local NOCOLOR="\[\e[0m\]"
+
+    local venv=""
+    if [[ $VIRTUAL_ENV != "" ]]; then
+        venv="($(basename $VIRTUAL_ENV))"
+    fi
+    local PS1_PART_1="$RED$USER$NOCOLOR@$CYAN$(hostname -s) $NOCOLOR[/$WHITEBOLD$(PWD)] $NOCOLOR$LIGHTCYAN$(__git_ps1)$NOCOLOR"
+    local PS1_PART_2="\n\$ "
+    local RULER_SIZE=$(expr 73 + 12)
+    local EXPANDED_PS1=$(echo $PS1_PART_1 | sed "s/\\\\\[\\\033\\[[0-9];[0-9][0-9]m\\\\\\]//g" | sed "s/\\\\\\[\\\e\\[0m\\\\\\]//g")
+    local LEN_PS=$(echo $EXPANDED_PS1 | wc -m)
+    if [[ $RULER_SIZE -gt $LEN_PS ]]; then
+        local LINE1_EXTRA=$(printf '%*s' $(expr $LEN_PS - $RULER_SIZE + 1) '' | tr ' ' -)
+    fi
+    export PS1="${PS1_PART_1}${LINE1_EXTRA}${PS1_PART_2}"
 }
-prompt
+export PROMPT_COMMAND="set_ps1"
+export PS1=""
 
 source /usr/local/bin/virtualenvwrapper.sh
 export LSCOLORS=gxfxcxdxbxegedabagacad
@@ -51,14 +69,12 @@ export LSCOLORS=gxfxcxdxbxegedabagacad
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 source ~/projetos/pessoal/dotfiles/.bash_aliases
-source /usr/local/etc/bash_completion.d/fab
 
 export CFLAGS=-Qunused-arguments
 export CPPFLAGS=-Qunused-arguments
 
 export HISTCONTROL=ignoredups
 
-source /usr/local/bin/activate.sh
 export GOPATH=/Users/tarsis
 
 PATH="/usr/local/heroku/bin:$GOPATH/bin:$PATH"
