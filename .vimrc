@@ -37,8 +37,12 @@ Plugin 'fisadev/fisa-vim-colorscheme'
 " Consoles as buffers
 Plugin 'rosenfeld/conque-term'
 
-Plugin 'akitaonrails/snipmate.vim'
-Plugin 'viniciuschagas/snipmate-snippets'
+" snipmate
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+
 
 " Bundles from vim-scripts repos
 
