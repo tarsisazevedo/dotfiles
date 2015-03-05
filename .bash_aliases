@@ -6,4 +6,5 @@ alias containers="tsuru app-list | grep unit | awk -F '|' '{print \$3}' | awk '{
 alias nodes="tsuru-admin docker-node-list | grep http | wc -l"
 alias cdtsuru="cd src/github.com/tsuru/tsuru"
 alias cdfreela="cd ~/projetos/freela/"
+alias cdglobo="cd ~/projetos/globo/"
 alias cdpessoal="cd ~/projetos/pessoal/"

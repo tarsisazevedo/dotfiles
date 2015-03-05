@@ -208,7 +208,7 @@ endif
 " colors for gvim
 if has('gui_running')
     colorscheme sexy-railscasts
-    set guifont=Source\ Code\ Pro:h14
+    set guifont=Source\ Code\ Pro:h16
 endif
 
 " when scrolling, keep cursor 3 lines away from screen border
