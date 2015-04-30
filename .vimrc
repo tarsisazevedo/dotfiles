@@ -36,6 +36,7 @@ Plugin 'vim-airline'
 Plugin 'fisadev/fisa-vim-colorscheme'
 " Consoles as buffers
 Plugin 'rosenfeld/conque-term'
+Plugin 'nsf/gocode'
 
 " snipmate
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -141,7 +142,7 @@ let OmniCpp_ShowAccess = 1
 " namespaces that are always used in your project.
 let OmniCpp_DefaultNamespaces = ["std"]
 " Complete Behaviour
-let OmniCpp_MayCompleteDot = 0
+let OmniCpp_MayCompleteDot = 1
 let OmniCpp_MayCompleteArrow = 0
 let OmniCpp_MayCompleteScope = 0
 " When 'completeopt' does not contain "longest", Vim automatically select the first entry of the popup menu. You can
@@ -238,4 +239,29 @@ syntax on
 
 " go to definition
 let g:godef_split=3 "open definition in vsplit window
+let g:godef_same_file_in_same_window=1
 autocmd BufWritePre *.go Fmt
+
+" go autocomplete with gocode
+function! Smart_TabComplete()
+  let line = getline('.')                         " current line
+
+  let substr = strpart(line, -1, col('.')+1)      " from the start of the current
+                                                  " line to one character right
+                                                  " of the cursor
+  let substr = matchstr(substr, "[^ \t]*$")       " word till cursor
+  if (strlen(substr)==0)                          " nothing to match on empty string
+    return "\<tab>"
+  endif
+  let has_period = match(substr, '\.') != -1      " position of period, if any
+  let has_slash = match(substr, '\/') != -1       " position of slash, if any
+  if (!has_period && !has_slash)
+    return "\<C-X>\<C-P>"                         " existing text matching
+  elseif ( has_slash )
+    return "\<C-X>\<C-F>"                         " file matching
+  else
+    return "\<C-X>\<C-O>"                         " plugin matching
+  endif
+endfunction
+
+inoremap <tab> <c-r>=Smart_TabComplete()<CR>
