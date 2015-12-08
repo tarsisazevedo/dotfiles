@@ -4,8 +4,8 @@ alias staging='sudo ~/projetos/globo/staging-deploy/scripts/staging.sh'
 alias load-virtuoso='cap LOADER_OPTS="-CGrt" ambiente:local base:tudo produto:tudo action:deploylocal'
 alias containers="tsuru app-list | grep unit | awk -F '|' '{print \$3}' | awk '{SUM+=\$3} END {print SUM}'"
 alias nodes="tsuru-admin docker-node-list | grep http | wc -l"
-alias cdtsuru="cd src/github.com/tsuru/tsuru"
+alias cdtsuru="cd ~/src/github.com/tsuru/tsuru"
 alias cdfreela="cd ~/projetos/freela/"
 alias cdglobo="cd ~/projetos/globo/"
 alias cdpessoal="cd ~/projetos/pessoal/"
-alias dns_flush="sudo discoveryutil mdnsflushcache"
+alias dns_flush="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder"
