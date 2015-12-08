@@ -23,8 +23,6 @@ alias l="ls"
 alias ..="cd .."
 
 # GREP
-export GREP_OPTIONS='--color=auto'
-export GREP_COLOR='1;37'
 alias grep='grep --color=auto' # Always highlight grep search term
 
 function PWD {
@@ -48,9 +46,9 @@ function set_ps1() {
 
     local venv=""
     if [[ $VIRTUAL_ENV != "" ]]; then
-        venv="($(basename $VIRTUAL_ENV))"
+        venv="($(basename $VIRTUAL_ENV)) "
     fi
-    local PS1_PART_1="$RED$USER$NOCOLOR@$CYAN$(hostname -s) $NOCOLOR[/$WHITEBOLD$(PWD)] $NOCOLOR$LIGHTCYAN$(__git_ps1)$NOCOLOR"
+    local PS1_PART_1="$LIGHTCYAN${venv}$RED$USER$NOCOLOR@$CYAN$(hostname -s) $NOCOLOR[/$WHITEBOLD$(PWD)] $NOCOLOR$LIGHTCYAN$(__git_ps1)$NOCOLOR"
     local PS1_PART_2="\n\$ "
     local RULER_SIZE=$(expr 73 + 12)
     local EXPANDED_PS1=$(echo $PS1_PART_1 | sed "s/\\\\\[\\\033\\[[0-9];[0-9][0-9]m\\\\\\]//g" | sed "s/\\\\\\[\\\e\\[0m\\\\\\]//g")
@@ -81,3 +79,5 @@ PATH="/usr/local/heroku/bin:$GOPATH/bin:$PATH"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+export TSURU_TARGET=`cat ~/.tsuru/target`
+export TSURU_TOKEN=`cat ~/.tsuru/token`

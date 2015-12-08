@@ -60,6 +60,7 @@ Plugin 'railscasts'
 Plugin 'fsouza/go.vim'
 
 Plugin 'dgryski/vim-godef'
+Plugin 'vim-multiple-cursors'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -169,8 +170,7 @@ nmap ,we :call CtrlPWithSearchText(expand('<cword>'), '')<CR>
 nmap ,pe :call CtrlPWithSearchText(expand('<cfile>'), '')<CR>
 
 " Don't change working directory
-let g:ctrlp_user_command = 'find %s -type f ! -regex ".*.git/.*" | grep -v "\(pyc\|swp\)$"'
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_user_command = 'find %s -type f ! -regex ".*.git/.*" | grep -v "`cat ~/.ctrlpignore`"'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_max_files = 0
 
@@ -209,7 +209,7 @@ endif
 " colors for gvim
 if has('gui_running')
     colorscheme sexy-railscasts
-    set guifont=Source\ Code\ Pro:h14
+    set guifont=Hack:h14
 endif
 
 " when scrolling, keep cursor 3 lines away from screen border
