@@ -12,31 +12,22 @@ Plugin 'gmarik/Vundle.vim'
 
 " Bundles from GitHub repos:
 
-" Python and PHP Debugger
-Plugin 'jaredly/vim-debug.vim'
 " Better file browser
 Plugin 'scrooloose/nerdtree'
 " Code commenter
 Plugin 'scrooloose/nerdcommenter'
-" Search and read python documentation
-Plugin 'fs111/pydoc.vim'
 " Class/module browser
 Plugin 'majutsushi/tagbar'
 " Code and files fuzzy finder
 Plugin 'kien/ctrlp.vim'
 " PEP8 and python-flakes checker
 Plugin 'nvie/vim-flake8'
-" Git integration
-Plugin 'motemen/git-vim'
 " Tab list panel
 Plugin 'kien/tabman.vim'
 " airline
 Plugin 'vim-airline'
-" Terminal Vim with 256 colors colorscheme
-Plugin 'fisadev/fisa-vim-colorscheme'
 " Consoles as buffers
 Plugin 'rosenfeld/conque-term'
-Plugin 'nsf/gocode'
 
 " snipmate
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -48,18 +39,21 @@ Plugin 'honza/vim-snippets'
 " Bundles from vim-scripts repos
 
 " Autocompletition
-Plugin 'AutoComplPop'
-" Python code checker
-Plugin 'pyflakes.vim'
+Plugin 'Shougo/neocomplete.vim'
 " XML/HTML tags navigation
 Plugin 'matchit.zip'
 
+" Terminal Vim with 256 colors colorscheme
+Plugin 'fisadev/fisa-vim-colorscheme'
 Plugin 'oguzbilgic/sexy-railscasts-theme'
 Plugin 'railscasts'
 
+" golang plugins
 Plugin 'fsouza/go.vim'
-
 Plugin 'dgryski/vim-godef'
+Plugin 'nsf/gocode'
+Plugin 'fatih/vim-go'
+
 Plugin 'vim-multiple-cursors'
 
 " All of your Plugins must be added before the following line
@@ -106,9 +100,6 @@ map tt :tabnew
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
-" old autocomplete keyboard shortcut
-imap <C-J> <C-X><C-O>
-
 " save as sudo
 ca w!! w !sudo tee "%"
 
@@ -120,35 +111,35 @@ highlight Pmenu ctermbg=4 guibg=LightGray
 " highlight PmenuThumb guibg=Black
 
 " use global scope search
-let OmniCpp_GlobalScopeSearch = 1
+"let OmniCpp_GlobalScopeSearch = 1
 " 0 = namespaces disabled
 " 1 = search namespaces in the current buffer
 " 2 = search namespaces in the current buffer and in included files
-let OmniCpp_NamespaceSearch = 2
+"let OmniCpp_NamespaceSearch = 2
 " 0 = auto
 " 1 = always show all members
-let OmniCpp_DisplayMode = 1
+"let OmniCpp_DisplayMode = 1
 " 0 = don't show scope in abbreviation
 " 1 = show scope in abbreviation and remove the last column
-let OmniCpp_ShowScopeInAbbr = 0
+"let OmniCpp_ShowScopeInAbbr = 0
 " This option allows to display the prototype of a function in the abbreviation part of the popup menu.
 " 0 = don't display prototype in abbreviation
 " 1 = display prototype in abbreviation
-let OmniCpp_ShowPrototypeInAbbr = 1
+"let OmniCpp_ShowPrototypeInAbbr = 1
 " This option allows to show/hide the access information ('+', '#', '-') in the popup menu.
 " 0 = hide access
 " 1 = show access
-let OmniCpp_ShowAccess = 1
+"let OmniCpp_ShowAccess = 1
 " This option can be use if you don't want to parse using namespace declarations in included files and want to add
 " namespaces that are always used in your project.
-let OmniCpp_DefaultNamespaces = ["std"]
+"let OmniCpp_DefaultNamespaces = ["std"]
 " Complete Behaviour
-let OmniCpp_MayCompleteDot = 1
-let OmniCpp_MayCompleteArrow = 0
-let OmniCpp_MayCompleteScope = 0
+"let OmniCpp_MayCompleteDot = 1
+"let OmniCpp_MayCompleteArrow = 0
+"let OmniCpp_MayCompleteScope = 0
 " When 'completeopt' does not contain "longest", Vim automatically select the first entry of the popup menu. You can
 " change this behaviour with the OmniCpp_SelectFirstItem option.
-let OmniCpp_SelectFirstItem = 0
+"let OmniCpp_SelectFirstItem = 0
 
 " CtrlP (new fuzzy finder)
 let g:ctrlp_map = ',e'
@@ -213,13 +204,7 @@ if has('gui_running')
 endif
 
 " when scrolling, keep cursor 3 lines away from screen border
-
 set scrolloff=3
-
-" autocompletition of files and commands behaves like shell
-" (complete only the common part, list the options that match)
-set wildmenu
-set wildmode=list:longest
 
 "Bad whitespaces
 match ErrorMsg '\s\+$'
@@ -241,3 +226,14 @@ syntax on
 let g:godef_split=3 "open definition in vsplit window
 let g:godef_same_file_in_same_window=1
 autocmd BufWritePre *.go Fmt
+
+filetype plugin on
+
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
