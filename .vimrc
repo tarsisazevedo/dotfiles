@@ -22,8 +22,6 @@ Plugin 'majutsushi/tagbar'
 Plugin 'kien/ctrlp.vim'
 " PEP8 and python-flakes checker
 Plugin 'nvie/vim-flake8'
-" Tab list panel
-Plugin 'kien/tabman.vim'
 " airline
 Plugin 'vim-airline'
 " Consoles as buffers
@@ -44,7 +42,6 @@ Plugin 'Shougo/neocomplete.vim'
 Plugin 'matchit.zip'
 
 " Terminal Vim with 256 colors colorscheme
-Plugin 'fisadev/fisa-vim-colorscheme'
 Plugin 'oguzbilgic/sexy-railscasts-theme'
 Plugin 'railscasts'
 
@@ -81,11 +78,6 @@ nnoremap <silent> <backspace> :noh<CR>
 " line numbers
 set nu
 
-" toggle Tagbar display
-map <F4> :TagbarToggle<CR>
-" autofocus on Tagbar open
-let g:tagbar_autofocus = 1
-
 " NERDTree (better file browser) toggle
 nnoremap <D-e> :NERDTreeToggle<CR>
 let NERDTreeShowBookmarks=1
@@ -105,41 +97,6 @@ ca w!! w !sudo tee "%"
 
 " colors and settings of autocompletition
 highlight Pmenu ctermbg=4 guibg=LightGray
-
-" highlight PmenuSel ctermbg=8 guibg=DarkBlue guifg=Red
-" highlight PmenuSbar ctermbg=7 guibg=DarkGray
-" highlight PmenuThumb guibg=Black
-
-" use global scope search
-"let OmniCpp_GlobalScopeSearch = 1
-" 0 = namespaces disabled
-" 1 = search namespaces in the current buffer
-" 2 = search namespaces in the current buffer and in included files
-"let OmniCpp_NamespaceSearch = 2
-" 0 = auto
-" 1 = always show all members
-"let OmniCpp_DisplayMode = 1
-" 0 = don't show scope in abbreviation
-" 1 = show scope in abbreviation and remove the last column
-"let OmniCpp_ShowScopeInAbbr = 0
-" This option allows to display the prototype of a function in the abbreviation part of the popup menu.
-" 0 = don't display prototype in abbreviation
-" 1 = display prototype in abbreviation
-"let OmniCpp_ShowPrototypeInAbbr = 1
-" This option allows to show/hide the access information ('+', '#', '-') in the popup menu.
-" 0 = hide access
-" 1 = show access
-"let OmniCpp_ShowAccess = 1
-" This option can be use if you don't want to parse using namespace declarations in included files and want to add
-" namespaces that are always used in your project.
-"let OmniCpp_DefaultNamespaces = ["std"]
-" Complete Behaviour
-"let OmniCpp_MayCompleteDot = 1
-"let OmniCpp_MayCompleteArrow = 0
-"let OmniCpp_MayCompleteScope = 0
-" When 'completeopt' does not contain "longest", Vim automatically select the first entry of the popup menu. You can
-" change this behaviour with the OmniCpp_SelectFirstItem option.
-"let OmniCpp_SelectFirstItem = 0
 
 " CtrlP (new fuzzy finder)
 let g:ctrlp_map = ',e'
@@ -164,6 +121,7 @@ nmap ,pe :call CtrlPWithSearchText(expand('<cfile>'), '')<CR>
 let g:ctrlp_user_command = 'find %s -type f ! -regex ".*.git/.*" | grep -v "`cat ~/.ctrlpignore`"'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_max_files = 0
+let g:ctrlp_buftag_types = {'go' : '--language-force=go --golang-types=ft'}
 
 " simple recursive grep
 command! -nargs=1 RecurGrep lvimgrep /<args>/gj ./**/*.* | lopen | set nowrap
@@ -182,10 +140,6 @@ inoremap <expr> ]  strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]
 " autoclose {
 inoremap        {  {}<Left>
 inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
-
-" tabman shortcuts
-let g:tabman_toggle = 'tl'
-let g:tabman_focus  = 'tf'
 
 " use 256 colors when possible
 if &term =~? 'mlterm\|xterm\|screen-256'
@@ -237,3 +191,18 @@ let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+" Search mappings: These will make it so that going to the next one in a
+" search will center on the line it's found in.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+"vim-go configs
+au FileType go nmap <Leader>e <Plug>(go-rename)
+au FileType go nmap <Leader>s <Plug>(go-implements)
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
