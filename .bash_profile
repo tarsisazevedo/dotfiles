@@ -48,7 +48,7 @@ function set_ps1() {
     if [[ $VIRTUAL_ENV != "" ]]; then
         venv="($(basename $VIRTUAL_ENV)) "
     fi
-    local PS1_PART_1="$LIGHTCYAN${venv}$RED$USER$NOCOLOR@$CYAN$(hostname -s) $NOCOLOR[/$WHITEBOLD$(PWD)] $NOCOLOR$LIGHTCYAN$(__git_ps1)$NOCOLOR"
+    local PS1_PART_1="$LIGHTCYAN${venv}$BLACK$USER$NOCOLOR@$PURPLE$(hostname -s) $NOCOLOR[/$LIGHTBLUE$(PWD)] $NOCOLOR$PURPLE$(__git_ps1)$NOCOLOR"
     local PS1_PART_2="\n\$ "
     local RULER_SIZE=$(expr 73 + 12)
     local EXPANDED_PS1=$(echo $PS1_PART_1 | sed "s/\\\\\[\\\033\\[[0-9];[0-9][0-9]m\\\\\\]//g" | sed "s/\\\\\\[\\\e\\[0m\\\\\\]//g")
@@ -81,3 +81,6 @@ PATH="/usr/local/heroku/bin:$GOPATH/bin:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
 export TSURU_TARGET=`cat ~/.tsuru/target`
 export TSURU_TOKEN=`cat ~/.tsuru/token`
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+source ~/.iterm2_shell_integration.`basename $SHELL`
