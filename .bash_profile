@@ -79,8 +79,7 @@ PATH="/usr/local/heroku/bin:$GOPATH/bin:$PATH"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-export TSURU_TARGET=`cat ~/.tsuru/target`
-export TSURU_TOKEN=`cat ~/.tsuru/token`
+export HOMEBREW_NO_ANALYTICS=1
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 source ~/.iterm2_shell_integration.`basename $SHELL`
