@@ -44,6 +44,7 @@ Plugin 'matchit.zip'
 " Terminal Vim with 256 colors colorscheme
 Plugin 'oguzbilgic/sexy-railscasts-theme'
 Plugin 'railscasts'
+Plugin 'adampasz/stonewashed-themes'
 
 " golang plugins
 Plugin 'fsouza/go.vim'
@@ -145,7 +146,7 @@ inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}
 if &term =~? 'mlterm\|xterm\|screen-256'
 	let &t_Co = 256
     " color
-    colorscheme fisa
+    colorscheme stonewashed-gui
 else
     " color
     colorscheme delek
