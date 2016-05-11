@@ -1,6 +1,6 @@
 sudo pip install virtualenvwrapper
 
-mkdir -p projetos/{pessoal,globo,freela}
+mkdir -p ~/projetos/{pessoal,globo,freela}
 cd projetos/pessoal/
 git clone https://github.com/tarsisazevedo/dotfiles.git
 cd dotfiles/
@@ -15,6 +15,7 @@ brew upgrade git
 brew install macvim
 brew linkapps macvim
 brew tap tsuru/homebrew-tsuru
+brew update
 brew install tsuru
 tsuru target-add default tsuru.globoi.com -s
 tsuru key-add local ~/.ssh/id_rsa.pub
