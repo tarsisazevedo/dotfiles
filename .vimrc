@@ -8,7 +8,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " Bundles from GitHub repos:
 
@@ -155,7 +155,7 @@ endif
 " colors for gvim
 if has('gui_running')
     colorscheme sexy-railscasts
-    set guifont=Hack:h14
+    set guifont=Mononoki:h14
 endif
 
 " when scrolling, keep cursor 3 lines away from screen border
