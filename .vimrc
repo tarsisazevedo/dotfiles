@@ -47,9 +47,7 @@ Plugin 'railscasts'
 Plugin 'adampasz/stonewashed-themes'
 
 " golang plugins
-Plugin 'fsouza/go.vim'
 Plugin 'dgryski/vim-godef'
-Plugin 'nsf/gocode'
 Plugin 'fatih/vim-go'
 
 Plugin 'vim-multiple-cursors'
@@ -101,15 +99,10 @@ highlight Pmenu ctermbg=4 guibg=LightGray
 
 " CtrlP (new fuzzy finder)
 let g:ctrlp_map = ',e'
+let g:ctrlp_cmd = 'CtrlP'
 nmap ,g :CtrlPBufTag<CR>
 nmap ,f :CtrlPLine<CR>
 nmap ,m :CtrlPMRUFiles<CR>
-
-" to be able to call CtrlP with default search text
-function! CtrlPWithSearchText(search_text, ctrlp_command_end)
-    execute ':CtrlP' . a:ctrlp_command_end
-    call feedkeys(a:search_text)
-endfunction
 
 " CtrlP with default text
 nmap ,wg :call CtrlPWithSearchText(expand('<cword>'), 'BufTag')<CR>
@@ -118,9 +111,11 @@ nmap ,d ,wg
 nmap ,we :call CtrlPWithSearchText(expand('<cword>'), '')<CR>
 nmap ,pe :call CtrlPWithSearchText(expand('<cfile>'), '')<CR>
 
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip 
 " Don't change working directory
-let g:ctrlp_user_command = 'find %s -type f ! -regex ".*.git/.*" | grep -v "`cat ~/.ctrlpignore`"'
+let g:ctrlp_user_command = 'find %s -type f'
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_max_files = 0
 let g:ctrlp_buftag_types = {'go' : '--language-force=go --golang-types=ft'}
 
@@ -155,10 +150,10 @@ endif
 " colors for gvim
 if has('gui_running')
     colorscheme sexy-railscasts
-    set guifont=Mononoki:h14
+    set guifont=Mononoki:h15
 endif
 
-" when scrolling, keep cursor 3 lines away from screen border
+"when scrolling, keep cursor 3 lines away from screen border
 set scrolloff=3
 
 "Bad whitespaces
@@ -180,7 +175,6 @@ syntax on
 " go to definition
 let g:godef_split=3 "open definition in vsplit window
 let g:godef_same_file_in_same_window=1
-autocmd BufWritePre *.go Fmt
 
 filetype plugin on
 
@@ -199,11 +193,16 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 
 "vim-go configs
-au FileType go nmap <Leader>e <Plug>(go-rename)
-au FileType go nmap <Leader>s <Plug>(go-implements)
+au FileType go nmap <Leader>r <Plug>(go-rename)
+au FileType go nmap <Leader>m <Plug>(go-implements)
+au FileType go nmap <leader>b  <Plug>(go-build)
+au FileType go nmap <leader>t  <Plug>(go-coverage-toggle)
+
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_interfaces = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+let g:go_fmt_command = "goimports"
+let g:go_list_type = "quickfix"
