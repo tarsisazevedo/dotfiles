@@ -49,8 +49,12 @@ Plugin 'adampasz/stonewashed-themes'
 " golang plugins
 Plugin 'dgryski/vim-godef'
 Plugin 'fatih/vim-go'
+Plugin 'nsf/gocode'
 
 Plugin 'vim-multiple-cursors'
+
+" spell check to pt-br
+Plugin 'mateusbraga/vim-spell-pt-br'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -113,7 +117,7 @@ nmap ,pe :call CtrlPWithSearchText(expand('<cfile>'), '')<CR>
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip 
 " Don't change working directory
-let g:ctrlp_user_command = 'find %s -type f'
+let g:ctrlp_user_command = 'find %s -type f ! -regex ".*.git/.*"'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_max_files = 0
@@ -169,7 +173,10 @@ nnoremap <silent> <Leader>[ :call TrimWhiteSpace()<CR>
 " Use Node.js for JavaScript interpretation
 let $JS_CMD='node'
 
+set spellfile=~/.vim/spell/en.utf-8.add
 autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd FileType md setlocal spell
+autocmd FileType md setlocal spelllang=en,pt_br
 syntax on
 
 " go to definition
@@ -186,6 +193,31 @@ let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+"
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
@@ -204,5 +236,5 @@ let g:go_highlight_structs = 1
 let g:go_highlight_interfaces = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
-let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
+let g:go_fmt_command = "goimports"
