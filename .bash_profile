@@ -83,3 +83,7 @@ export HOMEBREW_NO_ANALYTICS=1
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 source ~/.iterm2_shell_integration.`basename $SHELL`
+
+# added by Anaconda3 4.2.0 installer
+export PATH="/Users/tarsis/anaconda/bin:$PATH"
+export CDPATH="$GOPATH/src:$CDPATH"
