@@ -43,6 +43,8 @@ Plugin 'nsf/gocode'
 Plugin 'vim-multiple-cursors'
 " spell check to pt-br
 Plugin 'mateusbraga/vim-spell-pt-br'
+"buffer manipulation
+Plugin 'jeetsukumaran/vim-buffergator'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -54,17 +56,28 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
+" show cursorline
+set cursorline
+
+" improve autocompletion menu
+set wildmenu 
+
+" match this }])
+set showmatch
+
 " always show status bar
 set ls=2
 
 " incremental search
 set incsearch
-
 " highlighted search results
 set hlsearch!
-
 " delete highlight search
 nnoremap <silent> <backspace> :noh<CR>
+" Search mappings: These will make it so that going to the next one in a
+" search will center on the line it's found in.
+nnoremap n nzzzv
+nnoremap N Nzzzv
 
 " line numbers
 set nu
@@ -110,7 +123,7 @@ inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 " Close popup by <Space>.
-inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
 
 " AutoComplPop like behavior.
 let g:neocomplete#enable_auto_select = 1
@@ -204,11 +217,6 @@ let g:godef_split=3 "open definition in vsplit window
 let g:godef_same_file_in_same_window=1
 
 filetype plugin on
-
-" Search mappings: These will make it so that going to the next one in a
-" search will center on the line it's found in.
-nnoremap n nzzzv
-nnoremap N Nzzzv
 
 "vim-go configs
 au FileType go nmap <Leader>r <Plug>(go-rename)

@@ -87,3 +87,4 @@ source ~/.iterm2_shell_integration.`basename $SHELL`
 # added by Anaconda3 4.2.0 installer
 export PATH="/Users/tarsis/anaconda/bin:$PATH"
 export CDPATH="$GOPATH/src:$CDPATH"
+export JAVA_HOME="`/usr/libexec/java_home -v 1.8`"
