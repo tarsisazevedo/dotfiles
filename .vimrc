@@ -40,11 +40,11 @@ Plugin 'railscasts'
 Plugin 'dgryski/vim-godef'
 Plugin 'fatih/vim-go'
 Plugin 'nsf/gocode'
-Plugin 'vim-multiple-cursors'
 " spell check to pt-br
 Plugin 'mateusbraga/vim-spell-pt-br'
 "buffer manipulation
 Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'AndrewRadev/multichange.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -232,3 +232,7 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
+
+" multichange mappings
+let g:multichange_mapping        = '<c-n>'
+let g:multichange_motion_mapping = '<c-n>'
