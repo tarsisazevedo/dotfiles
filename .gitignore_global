@@ -1,3 +1,5 @@
 .DS_Store
 .d8_history
 .*.swp
+.ensime
+.ensime_cache.d/
