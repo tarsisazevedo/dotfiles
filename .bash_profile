@@ -84,9 +84,8 @@ export HOMEBREW_NO_ANALYTICS=1
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 source ~/.iterm2_shell_integration.`basename $SHELL`
 
-# added by Anaconda3 4.2.0 installer
 export CDPATH="$GOPATH/src:$CDPATH"
 export JAVA_HOME="`/usr/libexec/java_home -v 1.8`"
 export SPARK_HOME="/usr/local/spark-2.0.1-bin-hadoop2.7/"
 export HADOOP_HOME="/usr/local/hadoop-2.7.3/"
-export PATH="/Users/tarsis/anaconda/bin:$HADOOP_HOME/bin:$PATH"
+export PATH="$HADOOP_HOME/bin:$PATH"
