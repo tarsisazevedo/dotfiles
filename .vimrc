@@ -12,14 +12,10 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Bundles from GitHub repos:
 
-" Better file browser
-Plugin 'scrooloose/nerdtree'
 " Code commenter
 Plugin 'scrooloose/nerdcommenter'
 " Class/module browser
 Plugin 'majutsushi/tagbar'
-" Code and files fuzzy finder
-Plugin 'kien/ctrlp.vim'
 " PEP8 and python-flakes checker
 Plugin 'nvie/vim-flake8'
 " airline
@@ -45,29 +41,27 @@ Plugin 'mateusbraga/vim-spell-pt-br'
 "buffer manipulation
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'AndrewRadev/multichange.vim'
+"vim-ruby
+Plugin 'vim-ruby/vim-ruby'
+"markdown preview
+Plugin 'JamshedVesuna/vim-markdown-preview'
+"ack vim
+Plugin 'mileszs/ack.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-filetype plugin indent on    " required
-
-" tabs and spaces handling
-set expandtab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+filetype on           " Enable filetype detection
+filetype indent on    " Enable filetype-specific indenting
+filetype plugin on    " Enable filetype-specific plugins
 
 " show cursorline
 set cursorline
-
 " improve autocompletion menu
 set wildmenu 
-
 " match this }])
 set showmatch
-
 " always show status bar
 set ls=2
-
 " incremental search
 set incsearch
 " highlighted search results
@@ -78,14 +72,10 @@ nnoremap <silent> <backspace> :noh<CR>
 " search will center on the line it's found in.
 nnoremap n nzzzv
 nnoremap N Nzzzv
-
+"remove scrollbar
+set guioptions-=r
 " line numbers
 set nu
-
-" NERDTree (better file browser) toggle
-nnoremap <D-e> :NERDTreeToggle<CR>
-let NERDTreeShowBookmarks=1
-let NERDTreeIgnore = ['\.pyc$']
 
 " tab navigation
 map ,a :tabn<CR>
@@ -114,7 +104,7 @@ function! s:my_cr_function()
   return pumvisible() ? "\<C-y>" : "\<CR>"
 endfunction
 " <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
@@ -134,35 +124,14 @@ ca w!! w !sudo tee "%"
 " colors and settings of autocompletition
 highlight Pmenu ctermbg=4 guibg=LightGray
 
-" CtrlP (new fuzzy finder)
-let g:ctrlp_map = ',e'
-let g:ctrlp_cmd = 'CtrlP'
-nmap ,g :CtrlPBufTag<CR>
-nmap ,f :CtrlPLine<CR>
-nmap ,m :CtrlPMRUFiles<CR>
+" fuzzy file finder
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.ico
+set wildignore+=*.pdf,*.psd
+set wildignore+=node_modules/*,bower_components/*
+" Set the working directory to wherever the open file lives
+set autochdir
 
-" CtrlP with default text
-nmap ,wg :call CtrlPWithSearchText(expand('<cword>'), 'BufTag')<CR>
-nmap ,wf :call CtrlPWithSearchText(expand('<cword>'), 'Line')<CR>
-nmap ,d ,wg
-nmap ,we :call CtrlPWithSearchText(expand('<cword>'), '')<CR>
-nmap ,pe :call CtrlPWithSearchText(expand('<cfile>'), '')<CR>
-
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip 
-" Don't change working directory
-let g:ctrlp_user_command = 'find %s -type f ! -regex ".*.git/.*"'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_max_files = 0
-let g:ctrlp_buftag_types = {'go' : '--language-force=go --golang-types=ft'}
-
-" simple recursive grep
-command! -nargs=1 RecurGrep lvimgrep /<args>/gj ./**/*.* | lopen | set nowrap
-command! -nargs=1 RecurGrepFast silent exec 'lgrep! <q-args> ./**/*.*' | lopen
-nmap ,R :RecurGrep
-nmap ,r :RecurGrepFast
-nmap ,wR :RecurGrep <cword><CR>
-nmap ,wr :RecurGrepFast <cword><CR>
 
 " autoclose (
 inoremap        (  ()<Left>
@@ -216,8 +185,6 @@ syntax on
 let g:godef_split=3 "open definition in vsplit window
 let g:godef_same_file_in_same_window=1
 
-filetype plugin on
-
 "vim-go configs
 au FileType go nmap <Leader>r <Plug>(go-rename)
 au FileType go nmap <Leader>m <Plug>(go-implements)
@@ -236,3 +203,14 @@ let g:go_fmt_command = "goimports"
 " multichange mappings
 let g:multichange_mapping        = '<c-n>'
 let g:multichange_motion_mapping = '<c-n>'
+
+" ident
+autocmd Filetype python,md,go setlocal ts=4 sts=4 sw=4
+autocmd Filetype ruby,html,js setlocal ts=2 sts=2 sw=2
+
+" markdown
+let vim_markdown_preview_browser='Google Chrome'
+let vim_markdown_preview_hotkey='<C-m>'
+
+" Open vertical file explorer
+nnoremap <D-e> :Vexplore<CR>
