@@ -21,3 +21,5 @@
 	autocorrect = 5
 [pull]
 	rebase = true
+[tag]
+	sort = committerdate
