@@ -80,7 +80,7 @@ set nu
 " tab navigation
 map ,a :tabn<CR>
 map ,s :tabp<CR>
-map tt :tabnew 
+map tt :tabnew<Space>
 
 " neocomplete confs
 " Disable AutoComplPop.
@@ -205,7 +205,7 @@ let g:multichange_mapping        = '<c-n>'
 let g:multichange_motion_mapping = '<c-n>'
 
 " ident
-autocmd Filetype python,md,go setlocal ts=4 sts=4 sw=4
+autocmd Filetype python,md,go,java setlocal ts=4 sts=4 sw=4
 autocmd Filetype ruby,html,js setlocal ts=2 sts=2 sw=2
 
 " markdown
@@ -214,3 +214,7 @@ let vim_markdown_preview_hotkey='<C-m>'
 
 " Open vertical file explorer
 nnoremap <D-e> :Vexplore<CR>
+
+" ack for the win
+nnoremap <Leader>a :Ack<Space>
+
