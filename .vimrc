@@ -186,8 +186,12 @@ set expandtab       " Expand TABs to spaces
 let vim_markdown_preview_browser='Google Chrome'
 let vim_markdown_preview_hotkey='<C-m>'
 
-" Open vertical file explorer
+" file explorer
 nnoremap <D-e> :Vexplore<CR>
+let g:netrw_banner=0 " remove banner
+let g:netrw_browse_split=4 "open in a prior window
+let g:netrw_altv=1 " open splits to the right
+let g:netrw_liststyle=3 " tree view
 
 " ack for the win
 nnoremap <Leader>a :Ack<Space>
