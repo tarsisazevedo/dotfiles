@@ -45,6 +45,10 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 "ack vim
 Plugin 'mileszs/ack.vim'
+"auto pair [{(
+Plugin 'jiangmiao/auto-pairs'
+" autocomplete
+Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -180,3 +184,7 @@ nnoremap <D-e> :Vexplore<CR>
 " ack for the win
 nnoremap <Leader>a :Ack<Space>
 
+" ycm conf
+let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_autoclose_preview_window_after_insertio=1
+let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>', '<Enter>']
