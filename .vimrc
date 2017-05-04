@@ -58,8 +58,6 @@ filetype plugin on    " Enable filetype-specific plugins
 
 " show cursorline
 set cursorline
-" improve autocompletion menu
-set wildmenu 
 " match this }])
 set showmatch
 " always show status bar
@@ -78,6 +76,25 @@ nnoremap N Nzzzv
 set guioptions-=r
 " line numbers
 set nu
+syntax enable
+" find files recursivly
+" EX :find models/*.py
+set path+=**
+" fuzzy file finder
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.ico
+set wildignore+=*.pdf,*.psd
+set wildignore+=./node_modules/**,bower_components/*,
+" find file
+map ,e :find<Space>
+" improve find menu
+set wildmenu
+
+" configure tags with ctag
+" use ^] to jump tag under cursor
+" use g^] for ambiguous tags
+" use ^t to jump back up the tags stack
+command! MakeTags !ctags -R .
 
 " tab navigation
 map ,a :tabn<CR>
@@ -86,28 +103,6 @@ map tt :tabnew<Space>
 
 " save as sudo
 ca w!! w !sudo tee "%"
-
-" colors and settings of autocompletition
-highlight Pmenu ctermbg=4 guibg=LightGray
-
-" fuzzy file finder
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.ico
-set wildignore+=*.pdf,*.psd
-set wildignore+=node_modules/*,bower_components/*
-" Set the working directory to wherever the open file lives
-set autochdir
-
-
-" autoclose (
-inoremap        (  ()<Left>
-inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Left>" : ")"
-" autoclose [
-inoremap        [  []<Left>
-inoremap <expr> ]  strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Left>" : "]"
-" autoclose {
-inoremap        {  {}<Left>
-inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Left>" : "}"
 
 " use 256 colors when possible
 if &term =~? 'mlterm\|xterm\|screen-256'
@@ -141,11 +136,11 @@ nnoremap <silent> <Leader>[ :call TrimWhiteSpace()<CR>
 " Use Node.js for JavaScript interpretation
 let $JS_CMD='node'
 
+" spell check to english and portuguese
 set spellfile=~/.vim/spell/en.utf-8.add
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd FileType md setlocal spell
 autocmd FileType md setlocal spelllang=en,pt_br
-syntax on
 
 " go to definition
 let g:godef_split=3 "open definition in vsplit window
