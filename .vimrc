@@ -165,9 +165,22 @@ let g:go_fmt_command = "goimports"
 let g:multichange_mapping        = '<c-n>'
 let g:multichange_motion_mapping = '<c-n>'
 
-" ident
-autocmd Filetype python,md,go,java setlocal ts=4 sts=4 sw=4
-autocmd Filetype ruby,html,js setlocal ts=2 sts=2 sw=2
+
+" ident by file type
+autocmd FileType html set softtabstop=2 tabstop=2 laststatus=2 shiftwidth=2 expandtab
+
+" general tab as space conf
+set tabstop=4       " The width of a TAB is set to 4.
+                    " Still it is a \t. It is just that
+                    " Vim will interpret it to be having
+                    " a width of 4.
+
+set shiftwidth=4    " Indents will have a width of 4
+
+set softtabstop=4   " Sets the number of columns for a TAB
+
+set expandtab       " Expand TABs to spaces
+
 
 " markdown
 let vim_markdown_preview_browser='Google Chrome'
