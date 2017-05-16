@@ -14,6 +14,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Code commenter
 Plugin 'scrooloose/nerdcommenter'
+" Tree view
+Plugin 'scrooloose/nerdtree'
 " Class/module browser
 Plugin 'majutsushi/tagbar'
 " PEP8 and python-flakes checker
@@ -187,11 +189,7 @@ let vim_markdown_preview_browser='Google Chrome'
 let vim_markdown_preview_hotkey='<C-m>'
 
 " file explorer
-nnoremap <D-e> :Vexplore<CR>
-let g:netrw_banner=0 " remove banner
-let g:netrw_browse_split=4 "open in a prior window
-let g:netrw_altv=1 " open splits to the right
-let g:netrw_liststyle=3 " tree view
+nnoremap <D-e> :NERDTreeToggle<CR>
 
 " ack for the win
 nnoremap <Leader>a :Ack<Space>
@@ -200,3 +198,7 @@ nnoremap <Leader>a :Ack<Space>
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_autoclose_preview_window_after_insertio=1
 let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>', '<Enter>']
+
+" buffers manipulation
+nnoremap ,b :b<Space>
+nnoremap ,l :ls<CR>
