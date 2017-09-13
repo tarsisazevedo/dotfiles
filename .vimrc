@@ -202,3 +202,5 @@ let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>', '<Enter>']
 " buffers manipulation
 nnoremap ,b :b<Space>
 nnoremap ,l :ls<CR>
+nnoremap ,sn :vsplit<bar>:bn
+nnoremap ,sp :vsplit<bar>:bp
