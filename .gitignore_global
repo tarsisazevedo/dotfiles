@@ -3,3 +3,4 @@
 .*.swp
 .ensime
 .ensime_cache.d/
+.vscode/
