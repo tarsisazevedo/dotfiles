@@ -26,7 +26,6 @@ Plugin 'vim-airline'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
 " XML/HTML tags navigation
 Plugin 'matchit.zip'
 " Terminal Vim with 256 colors colorscheme
@@ -50,7 +49,9 @@ Plugin 'mileszs/ack.vim'
 "auto pair [{(
 Plugin 'jiangmiao/auto-pairs'
 " autocomplete
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -167,22 +168,14 @@ let g:go_fmt_command = "goimports"
 let g:multichange_mapping        = '<c-n>'
 let g:multichange_motion_mapping = '<c-n>'
 
-
-" ident by file type
-autocmd FileType html set softtabstop=2 tabstop=2 laststatus=2 shiftwidth=2 expandtab
-
 " general tab as space conf
 set tabstop=4       " The width of a TAB is set to 4.
                     " Still it is a \t. It is just that
                     " Vim will interpret it to be having
                     " a width of 4.
-
 set shiftwidth=4    " Indents will have a width of 4
-
 set softtabstop=4   " Sets the number of columns for a TAB
-
 set expandtab       " Expand TABs to spaces
-
 
 " markdown
 let vim_markdown_preview_browser='Google Chrome'
@@ -194,13 +187,72 @@ nnoremap <D-e> :NERDTreeToggle<CR>
 " ack for the win
 nnoremap <Leader>a :Ack<Space>
 
-" ycm conf
-let g:ycm_autoclose_preview_window_after_completion=1
-let g:ycm_autoclose_preview_window_after_insertio=1
-let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>', '<Enter>']
-
 " buffers manipulation
 nnoremap ,b :b<Space>
 nnoremap ,l :ls<CR>
 nnoremap ,sn :vsplit<bar>:bn
 nnoremap ,sp :vsplit<bar>:bp
+
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" AutoComplPop like behavior.
+let g:neocomplete#enable_auto_select = 1
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+
+augroup vimrcEx
+  " Clear all autocmds in the group
+    autocmd!
+
+    autocmd! BufRead,BufNewFile *.pp setfiletype puppet
+    autocmd! BufRead,BufNewFile Gemfile setfiletype ruby
+    autocmd! BufRead,BufNewFile Procfile setfiletype ruby
+    autocmd! BufRead,BufNewFile *.go set tabstop=4 softtabstop=4 shiftwidth=4
+    autocmd! BufRead,BufNewFile *.es6 setfiletype javascript
+    autocmd! BufRead,BufNewFile *.html,*.js,*.css set ai smartindent ts=2 sw=2 sts=2 expandtab
+    autocmd! FileType css setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd! FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd! FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd! FileType python setlocal omnifunc=pythoncomplete#Complete
+    autocmd! FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup END
