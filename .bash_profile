@@ -1,6 +1,7 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+source ~/.bash_git
 # go lang
 GOROOT="/usr/local/Cellar/go/r60.1"
 
@@ -48,7 +49,7 @@ function set_ps1() {
     if [[ $VIRTUAL_ENV != "" ]]; then
         venv="($(basename $VIRTUAL_ENV)) "
     fi
-    local PS1_PART_1="$LIGHTCYAN${venv}$BLACK$USER$NOCOLOR@$PURPLE$(hostname -s) $NOCOLOR[/$LIGHTBLUE$(PWD)] $NOCOLOR$PURPLE$(__git_ps1)$NOCOLOR"
+    local PS1_PART_1="$LIGHTBLUE${venv}$BLACK$USER$NOCOLOR@$PURPLE$(hostname -s) $NOCOLOR[/$LIGHTBLUE$(PWD)] $NOCOLOR$PURPLE$(__git_ps1)$NOCOLOR"
     local PS1_PART_2="\n\$ "
     local RULER_SIZE=$(expr 73 + 12)
     local EXPANDED_PS1=$(echo $PS1_PART_1 | sed "s/\\\\\[\\\033\\[[0-9];[0-9][0-9]m\\\\\\]//g" | sed "s/\\\\\\[\\\e\\[0m\\\\\\]//g")
@@ -73,9 +74,7 @@ export CPPFLAGS=-Qunused-arguments
 
 export HISTCONTROL=ignoredups
 
-export GOPATH=/Users/tarsis
-
-PATH="/usr/local/heroku/bin:$GOPATH/bin:$PATH"
+export GOPATH=/home/tarsis/go
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -85,7 +84,5 @@ test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shel
 source ~/.iterm2_shell_integration.`basename $SHELL`
 
 export CDPATH="$GOPATH/src:$CDPATH"
-export JAVA_HOME="`/usr/libexec/java_home -v 1.8`"
-export SPARK_HOME="/usr/local/spark-2.0.1-bin-hadoop2.7/"
-export HADOOP_HOME="/usr/local/hadoop-2.7.3/"
 export PATH="$HADOOP_HOME/bin:$PATH"
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
