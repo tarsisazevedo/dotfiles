@@ -52,6 +52,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
+Plugin 'adampasz/stonewashed-themes'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -117,12 +118,6 @@ else
     colorscheme delek
 endif
 
-" colors for gvim
-if has('gui_running')
-    colorscheme sexy-railscasts
-    set guifont=Mononoki:h15
-endif
-
 "when scrolling, keep cursor 3 lines away from screen border
 set scrolloff=3
 
@@ -183,6 +178,7 @@ let vim_markdown_preview_hotkey='<C-m>'
 
 " file explorer
 nnoremap <D-e> :NERDTreeToggle<CR>
+let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 
 " ack for the win
 nnoremap <Leader>a :Ack<Space>
@@ -239,6 +235,9 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+
+" save and execute current python file
+nmap <C-b> :w !python %<cr>
 
 augroup vimrcEx
   " Clear all autocmds in the group
