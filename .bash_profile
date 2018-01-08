@@ -67,7 +67,7 @@ export LSCOLORS=gxfxcxdxbxegedabagacad
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
-source ~/projetos/pessoal/dotfiles/.bash_aliases
+source ~/projects/dotfiles/.bash_aliases
 
 export CFLAGS=-Qunused-arguments
 export CPPFLAGS=-Qunused-arguments
