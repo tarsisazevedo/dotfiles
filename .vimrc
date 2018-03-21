@@ -18,14 +18,11 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 " Class/module browser
 Plugin 'majutsushi/tagbar'
-" PEP8 and python-flakes checker
-Plugin 'nvie/vim-flake8'
 " airline
 Plugin 'vim-airline'
-" snipmate
+"
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
 " XML/HTML tags navigation
 Plugin 'matchit.zip'
 " Terminal Vim with 256 colors colorscheme
@@ -56,6 +53,13 @@ Plugin 'alfredodeza/pytest.vim'
 Plugin 'avakhov/vim-yaml'
 "linter
 Plugin 'w0rp/ale'
+"markdown preview
+Plugin 'euclio/vim-markdown-composer'
+" snippets
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+" completion
+Plugin 'maralla/completor.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -211,8 +215,32 @@ augroup END
 set backspace=indent,eol,start
 
 " Pytest conf
-nmap <silent><Leader>f <ESC>:Pytest file<CR>
+nmap <silent><Leader>pt <ESC>:Pytest file<CR>
 nmap <silent><Leader>ps <ESC>:Pytest session<CR>
 
 " python completion
 let g:jedi#show_call_signatures = "2"
+let g:jedi#use_splits_not_buffers = "right"
+
+" ale conf
+let g:ale_fix_on_save = 1
+let g:ale_lint_on_save = 1
+let g:ale_linters = {
+\   'python': ['autopep8', 'flake8'],
+\}
+
+let g:ale_fixers = {
+\   'python': ['autopep8'],
+\}
+
+
+" ale python conf
+let g:ale_python_autopep8_use_global = 1
+let g:ale_python_autopep8_options = "--max-line-length 120"
+let g:ale_python_flake8_use_global = 1
+let g:ale_python_flake8_options = "--max-line-length 120"
+
+" snippets
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
