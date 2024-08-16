@@ -4,10 +4,10 @@ mkdir -p ~/projetos/{pessoal,globo,freela}
 cd projetos/pessoal/
 git clone https://github.com/tarsisazevedo/dotfiles.git
 cd dotfiles/
-ln -s /Users/tarsis/projetos/pessoal/dotfiles/.gitignore_global ~/
-ln -s /Users/tarsis/projetos/pessoal/dotfiles/.bash_profile ~/
-ln -s /Users/tarsis/projetos/pessoal/dotfiles/.gitconfig ~/
-ln -s /Users/tarsis/projetos/pessoal/dotfiles/.vimrc ~/
+ln -s $(pwd)/.gitignore_global ~/
+ln -s $(pwd)/.bash_profile ~/
+ln -s $(pwd)/.gitconfig ~/
+ln -s $(pwd)/.vimrc ~/
 
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew update
