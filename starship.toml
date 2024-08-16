@@ -1,0 +1,18 @@
+format = '''
+[│](bold green)$gcloud$kubernetes$directory$python$git_branch$git_state$git_status$git_metrics
+[└─>](bold green) '''
+
+[aws]
+disabled = true
+
+[python]
+format = '[${pyenv_prefix}(\($virtualenv {$version}\) )]($style)'
+
+[gcloud]
+format = '[$account(@$project)(\($region\))]($style) '
+
+[git_metrics]
+disabled = false
+
+[kubernetes]
+disabled = false
