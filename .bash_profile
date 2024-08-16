@@ -1,19 +1,11 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-source ~/.bash_git
 # go lang
 GOROOT="/usr/local/Cellar/go/r60.1"
 
-# bash completion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
-fi
-
-export ARCHFLAGS="-arch i386 -arch x86_64"
-
 # Homebrew
-PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+PATH="/usr/local/bin:/usr/local/sbin:$HOME/.poetry/bin:$PATH"
 
 # LS COLORS
 export CLICOLOR=1
@@ -62,27 +54,56 @@ function set_ps1() {
 export PROMPT_COMMAND="set_ps1"
 export PS1=""
 
-source /usr/local/bin/virtualenvwrapper.sh
 export LSCOLORS=gxfxcxdxbxegedabagacad
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
-source ~/projects/dotfiles/.bash_aliases
-
-export CFLAGS=-Qunused-arguments
-export CPPFLAGS=-Qunused-arguments
+source ~/projects/pessoal/dotfiles/.bash_aliases
 
 export HISTCONTROL=ignoredups
+export HISTFILESIZE=100000000
 
-export GOPATH=/home/tarsis/go
+export GOPATH=~/.go
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 export HOMEBREW_NO_ANALYTICS=1
 
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
-source ~/.iterm2_shell_integration.`basename $SHELL`
-
 export CDPATH="$GOPATH/src:$CDPATH"
-export PATH="$HADOOP_HOME/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+source ~/.git-prompt.sh
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+export PATH="$HOME/.cargo/bin:$PATH"
+
+source $HOME/.cargo/env
+export PATH="$HOME/.poetry/bin:$PATH"
+export PATH="$HOME/projects/k8s/jusbr-kube/scripts:$PATH"
+export PATH="/Library/TeX/texbin/latex:$PATH"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completionexport PATH="/usr/local/opt/openssl@3/bin:$PATH"
+
+export PYENV_ROOT="$HOME/.pyenv"
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/tarsisazevedo/google-cloud-sdk/path.bash.inc' ]; then . '/Users/tarsisazevedo/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/tarsisazevedo/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/tarsisazevedo/google-cloud-sdk/completion.bash.inc'; fi
+export PATH="/Users/tarsisazevedo/projects/homebrew/opt/openssl@3/bin:$PATH"
+export PATH="/Users/tarsisazevedo/projects/homebrew/opt/bzip2/bin:$PATH"
+eval "$(/Users/tarsisazevedo/projects/homebrew/bin/brew shellenv)"
+export PATH="/Users/tarsisazevedo/projects/homebrew/opt/sqlite/bin:$PATH"
+
+# bash completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+fi
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"export PATH="/Users/tarsisazevedo/projects/homebrew/opt/llvm@11/bin:$PATH"
+
+export PATH="/Users/tarsisazevedo/projects/homebrew/opt/postgresql@11/bin:$PATH"
+export LDFLAGS="-L/Users/tarsisazevedo/projects/homebrew/opt/postgresql@11/lib"
+export CPPFLAGS="-I/Users/tarsisazevedo/projects/homebrew/opt/postgresql@11/include"
+export PKG_CONFIG_PATH="/Users/tarsisazevedo/projects/homebrew/opt/postgresql@11/lib/pkgconfig"
